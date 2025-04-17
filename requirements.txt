@@ -1,0 +1,15 @@
+fastapi==0.95.2
+uvicorn==0.22.0
+pymongo[srv]==4.8.0 
+python-jose==3.3.0
+# passlib[bcrypt]==1.7.4  # for hashing passwords
+fastapi-utils==0.2.0
+python-dotenv==1.0.1
+watchdog==4.0.1
+uvicorn
+python-jose[cryptography] 
+# passlib[bcrypt]
+python-multipart
+
+passlib==1.7.4
+bcrypt==3.2.2
