@@ -11,14 +11,14 @@ class Patient(BaseModel):
     patient_age: int
     medical_history: Optional[str] = None
     
+    @validator("id", pre=True, always=True)
+    def convert_objectid(cls, v):
+        return str(v) if isinstance(v, ObjectId) else v
+
     class Config:
         allow_population_by_field_name = True
-    
-    @validator("id", pre=True, always=True)
-    def convert_objectid(cls, value):
-        if isinstance(value, ObjectId):
-            return str(value)
-        return value
+        arbitrary_types_allowed = True
+        json_encoders = {ObjectId: str}
 
 
 class PatientCreate(BaseModel):
@@ -43,11 +43,11 @@ class PatientResponse(BaseModel):
     patient_age: int
     medical_history: Optional[str] = None
     
+    @validator("id", pre=True, always=True)
+    def convert_objectid(cls, v):
+        return str(v) if isinstance(v, ObjectId) else v
+
     class Config:
         allow_population_by_field_name = True
-    
-    @validator("id", pre=True, always=True)
-    def convert_objectid(cls, value):
-        if isinstance(value, ObjectId):
-            return str(value)
-        return value 
+        arbitrary_types_allowed = True
+        json_encoders = {ObjectId: str}

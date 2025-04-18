@@ -12,15 +12,15 @@ class User(BaseModel):
     phone_number: Optional[str] = None
     emergency_contact: Optional[str] = None
     hashed_password: Optional[str] = None
-    
+
+    @validator("id", pre=True, always=True)
+    def convert_objectid(cls, v):
+        return str(v) if isinstance(v, ObjectId) else v
+
     class Config:
         allow_population_by_field_name = True
-    
-    @validator("id", pre=True, always=True)
-    def convert_objectid(cls, value):
-        if isinstance(value, ObjectId):
-            return str(value)
-        return value
+        arbitrary_types_allowed = True
+        json_encoders = {ObjectId: str}
     
 
 class UserUpdate(BaseModel):
@@ -63,12 +63,13 @@ class UserResponse(BaseModel):
     last_name: Optional[str] = None
     phone_number: Optional[str] = None
     emergency_contact: Optional[str] = None
-    
+    hashed_password: Optional[str] = None
+
+    @validator("id", pre=True, always=True)
+    def convert_objectid(cls, v):
+        return str(v) if isinstance(v, ObjectId) else v
+
     class Config:
         allow_population_by_field_name = True
-    
-    @validator("id", pre=True, always=True)
-    def convert_objectid(cls, value):
-        if isinstance(value, ObjectId):
-            return str(value)
-        return value
+        arbitrary_types_allowed = True
+        json_encoders = {ObjectId: str}

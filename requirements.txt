@@ -1,9 +1,9 @@
-fastapi==0.95.2
+fastapi==0.115.12
+fastapi-utils==0.8.0
 uvicorn==0.22.0
 pymongo[srv]==4.8.0 
 python-jose==3.3.0
 # passlib[bcrypt]==1.7.4  # for hashing passwords
-fastapi-utils==0.2.0
 python-dotenv==1.0.1
 watchdog==4.0.1
 uvicorn
@@ -13,3 +13,8 @@ python-multipart
 
 passlib==1.7.4
 bcrypt==3.2.2
+
+# Agent dependencies
+langgraph>=0.0.19
+google-generativeai>=0.4.0
+pydantic>=2.0.0,<3.0.0

@@ -6,7 +6,7 @@ from pymongo.collection import Collection
 from datetime import timedelta
 from user.utils.auth import create_access_token, get_current_user
 from core.config import settings
-
+from fastapi.responses import JSONResponse
 router = APIRouter()
 user_controller = UserController()
 
@@ -52,7 +52,7 @@ async def login_user(login_data: UserLogin, db: Collection = Depends(get_db)):
     
     return {"access_token": access_token, "token_type": "bearer"}
 
-@router.get("/me", response_model=UserResponse)
+@router.get("/me", response_model=UserResponse, response_model_by_alias=True)
 async def get_current_user_profile(
     db: Collection = Depends(get_db),
     current_user_id: str = Depends(get_current_user)
@@ -64,59 +64,44 @@ async def get_current_user_profile(
         raise HTTPException(status_code=401, detail="Authentication required")
         
     user = await user_controller.get_user_by_id(current_user_id, db)
-    
+    print(f"User: {user}")
     # Add more debugging
     if not user:
         print(f"No user found in database with ID: {current_user_id}")
         raise HTTPException(status_code=404, detail="User not found")
     
-    print(f"Found user: {user}")
+    print(f"Found user test: {user}")
     return user
+    # return JSONResponse(content=user.dict(by_alias=True))
+    # return user
 
-@router.get("/{user_id}", response_model=UserResponse)
+@router.get("/", response_model=UserResponse, response_model_by_alias=True)
 async def get_user(
-    user_id: str,  
     db: Collection = Depends(get_db), 
     current_user_id: str = Depends(get_current_user)
 ):
-    print(f"get_user: Accessing user_id {user_id} by authenticated user {current_user_id}")
-    # For security, users can only view their own profile unless admin role is implemented
-    if user_id != current_user_id:
-        print(f"Access denied: {current_user_id} tried to access {user_id}")
-        raise HTTPException(
-            status_code=status.HTTP_403_FORBIDDEN,
-            detail="Not authorized to access this user's data"
-        )
+    print(f"get_user: Accessing user_id {current_user_id} by authenticated user {current_user_id}")
         
-    user = await user_controller.get_user_by_id(user_id, db)
+    user = await user_controller.get_user_by_id(current_user_id, db)
     if not user:
-        print(f"User not found: {user_id}")
+        print(f"User not found: {current_user_id}")
         raise HTTPException(status_code=404, detail="User not found")
     print(f"User found: {user}")
     return user
 
-@router.put("/{user_id}/update", response_model=UserResponse)
+@router.put("/update", response_model=UserResponse, response_model_by_alias=True)
 async def update_user(
-    user_id: str, 
     user: UserUpdate, 
     db: Collection = Depends(get_db),
     current_user_id: str = Depends(get_current_user)
 ):
-    print(f"update_user: Updating user_id {user_id} by authenticated user {current_user_id}")
+    print(f"update_user: Updating user_id {current_user_id} by authenticated user {current_user_id}")
     print(f"Update data: {user.dict(exclude_unset=True)}")
     
-    # For security, users can only update their own profile unless admin role is implemented
-    if user_id != current_user_id:
-        print(f"Update denied: {current_user_id} tried to update {user_id}")
-        raise HTTPException(
-            status_code=status.HTTP_403_FORBIDDEN,
-            detail="Not authorized to update this user's data"
-        )
-        
     try:
-        updated_user = await user_controller.update_user(user_id, user, db)
+        updated_user = await user_controller.update_user(current_user_id, user, db)
         if not updated_user:
-            print(f"Update failed: User not found {user_id}")
+            print(f"Update failed: User not found {current_user_id}")
             raise HTTPException(status_code=404, detail="User not found")
         print(f"User updated successfully: {updated_user}")
         return updated_user

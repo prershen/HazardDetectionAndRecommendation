@@ -1,5 +1,6 @@
 from fastapi import APIRouter, HTTPException, Depends, status, File, UploadFile, Form
 from spaces.models.space_models import Space, SpaceUpdate, SpaceCreate, SpaceLog, SpaceLogCreate, SpaceLogUpdate, SpaceResponse, SpaceLogResponse, HazardList
+from patients.models.patient_models import PatientResponse
 from spaces.controllers.space_controllers import SpaceController, SpaceLogController
 from user.db.mongodb import get_db
 from pymongo.collection import Collection
@@ -10,6 +11,7 @@ import json
 from datetime import datetime
 from pydantic import BaseModel
 from bson.objectid import ObjectId
+from fastapi.responses import JSONResponse
 
 router = APIRouter()
 space_controller = SpaceController()
@@ -27,12 +29,7 @@ async def create_space(
 ):
     try:
         # Ensure the user creating the space is the same as the user_id
-        if space.user_id != current_user_id:
-            raise HTTPException(
-                status_code=status.HTTP_403_FORBIDDEN,
-                detail="Not authorized to create a space for another user"
-            )
-            
+        space.user_id = current_user_id
         created_space = await space_controller.create_space(space, db)
         if not created_space:
             raise HTTPException(status_code=400, detail="Space creation failed")
@@ -45,23 +42,16 @@ async def create_space(
             detail=f"Space creation failed: {str(e)}"
         )
 
-@router.get("/user/{user_id}", response_model=List[SpaceResponse])
+@router.get("/user", response_model=List[SpaceResponse], response_model_by_alias=True)
 async def get_spaces_by_user(
-    user_id: str,
     db: Collection = Depends(get_db),
     current_user_id: str = Depends(get_current_user)
 ):
-    # Only allow users to access their own spaces
-    if user_id != current_user_id:
-        raise HTTPException(
-            status_code=status.HTTP_403_FORBIDDEN,
-            detail="Not authorized to access another user's spaces"
-        )
-        
-    spaces = await space_controller.get_spaces_by_user_id(user_id, db)
+    spaces = await space_controller.get_spaces_by_user_id(current_user_id, db)
+    # return JSONResponse(content=spaces.dict(by_alias=True))
     return spaces
 
-@router.get("/{space_id}", response_model=SpaceResponse)
+@router.get("/{space_id}", response_model=SpaceResponse, response_model_by_alias=True)
 async def get_space(
     space_id: str,
     db: Collection = Depends(get_db),
@@ -78,10 +68,9 @@ async def get_space(
             status_code=status.HTTP_403_FORBIDDEN,
             detail="Not authorized to access this space"
         )
-        
     return space
 
-@router.put("/{space_id}", response_model=SpaceResponse)
+@router.put("/{space_id}", response_model=SpaceResponse, response_model_by_alias=True)
 async def update_space(
     space_id: str,
     space_update: SpaceUpdate,
@@ -141,7 +130,7 @@ async def delete_space(
     return {"message": "Space and associated logs deleted successfully"}
 
 # Space Log Endpoints
-@router.post("/logs/create", response_model=SpaceLogResponse)
+@router.post("/logs/create", response_model=SpaceLogResponse, response_model_by_alias=True)
 async def create_space_log(
     space_log: SpaceLogCreate,
     db: Collection = Depends(get_db),
@@ -172,7 +161,7 @@ async def create_space_log(
             detail=f"Space log creation failed: {str(e)}"
         )
 
-@router.post("/logs/upload-image", response_model=SpaceLogResponse)
+@router.post("/logs/upload-image", response_model=SpaceLogResponse, response_model_by_alias=True)
 async def upload_image(
     space_id: str = Form(...),
     image: UploadFile = File(...),
@@ -242,7 +231,7 @@ async def upload_image(
             detail=f"Space log creation failed: {str(e)}"
         )
 
-@router.get("/logs/{log_id}", response_model=SpaceLogResponse)
+@router.get("/logs/{log_id}", response_model=SpaceLogResponse, response_model_by_alias=True)
 async def get_space_log(
     log_id: str,
     db: Collection = Depends(get_db),
@@ -261,10 +250,9 @@ async def get_space_log(
             status_code=status.HTTP_403_FORBIDDEN,
             detail="Not authorized to access this log"
         )
-        
     return log
 
-@router.get("/logs/space/{space_id}", response_model=List[SpaceLogResponse])
+@router.get("/logs/space/{space_id}", response_model=List[SpaceLogResponse], response_model_by_alias=True)
 async def get_logs_by_space(
     space_id: str,
     db: Collection = Depends(get_db),
@@ -285,7 +273,7 @@ async def get_logs_by_space(
     logs = await space_log_controller.get_logs_by_space_id(space_id, db)
     return logs
 
-@router.put("/logs/{log_id}", response_model=SpaceLogResponse)
+@router.put("/logs/{log_id}", response_model=SpaceLogResponse, response_model_by_alias=True)
 async def update_space_log(
     log_id: str,
     log_update: SpaceLogUpdate,
@@ -348,7 +336,7 @@ async def delete_space_log(
     
     return {"message": "Space log deleted successfully"}
 
-@router.post("/{space_id}/patients", response_model=SpaceResponse)
+@router.post("/{space_id}/patients", response_model=SpaceResponse, response_model_by_alias=True)
 async def add_patient_to_space(
     space_id: str,
     request: PatientToSpaceRequest,
@@ -428,7 +416,7 @@ async def remove_patient_from_space(
             detail=f"Failed to remove patient from space: {str(e)}"
         )
 
-@router.get("/{space_id}/patients")
+@router.get("/{space_id}/patients", response_model=List[PatientResponse], response_model_by_alias=True)
 async def get_patients_in_space(
     space_id: str,
     db: Collection = Depends(get_db),

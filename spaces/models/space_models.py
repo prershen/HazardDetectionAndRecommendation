@@ -15,6 +15,8 @@ class Space(BaseModel):
     
     class Config:
         allow_population_by_field_name = True
+        arbitrary_types_allowed = True
+        json_encoders = {ObjectId: str}
     
     @validator("id", pre=True, always=True)
     def convert_objectid(cls, value):
@@ -60,6 +62,8 @@ class SpaceLog(BaseModel):
     
     class Config:
         allow_population_by_field_name = True
+        arbitrary_types_allowed = True
+        json_encoders = {ObjectId: str}
     
     @validator("id", pre=True, always=True)
     def convert_objectid(cls, value):
@@ -103,12 +107,12 @@ class SpaceResponse(BaseModel):
     
     class Config:
         allow_population_by_field_name = True
+        arbitrary_types_allowed = True
+        json_encoders = {ObjectId: str}
     
     @validator("id", pre=True, always=True)
-    def convert_objectid(cls, value):
-        if isinstance(value, ObjectId):
-            return str(value)
-        return value
+    def convert_objectid(cls, v):
+        return str(v) if isinstance(v, ObjectId) else v
 
 
 class SpaceLogResponse(BaseModel):
@@ -126,9 +130,9 @@ class SpaceLogResponse(BaseModel):
     
     class Config:
         allow_population_by_field_name = True
+        arbitrary_types_allowed = True
+        json_encoders = {ObjectId: str}
     
     @validator("id", pre=True, always=True)
-    def convert_objectid(cls, value):
-        if isinstance(value, ObjectId):
-            return str(value)
-        return value 
+    def convert_objectid(cls, v):
+        return str(v) if isinstance(v, ObjectId) else v

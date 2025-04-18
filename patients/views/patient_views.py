@@ -10,7 +10,7 @@ router = APIRouter()
 patient_controller = PatientController()
 
 
-@router.post("/", response_model=PatientResponse)
+@router.post("/", response_model=PatientResponse, response_model_by_alias=True)
 async def create_patient(
     patient: PatientCreate, 
     db: Collection = Depends(get_db),
@@ -30,7 +30,7 @@ async def create_patient(
         )
 
 
-@router.get("/", response_model=List[PatientResponse])
+@router.get("/", response_model=List[PatientResponse], response_model_by_alias=True)
 async def get_user_patients(
     db: Collection = Depends(get_db),
     current_user_id: str = Depends(get_current_user)
@@ -45,7 +45,7 @@ async def get_user_patients(
         )
 
 
-@router.get("/{patient_id}", response_model=PatientResponse)
+@router.get("/{patient_id}", response_model=PatientResponse, response_model_by_alias=True)
 async def get_patient(
     patient_id: str,
     db: Collection = Depends(get_db),
@@ -66,7 +66,7 @@ async def get_patient(
     return patient
 
 
-@router.put("/{patient_id}", response_model=PatientResponse)
+@router.put("/{patient_id}", response_model=PatientResponse, response_model_by_alias=True)
 async def update_patient(
     patient_id: str,
     patient: PatientUpdate,

@@ -1,5 +1,5 @@
 from pymongo.errors import DuplicateKeyError
-from patients.models.patient_models import Patient, PatientUpdate, PatientCreate
+from patients.models.patient_models import Patient, PatientUpdate, PatientCreate, PatientResponse
 from pymongo.collection import Collection
 from bson.objectid import ObjectId
 from typing import Optional, List
@@ -44,7 +44,7 @@ class PatientController:
         
         cursor = patients_collection.find({"user_id": user_id})
         for patient_data in cursor:
-            patients.append(Patient(**patient_data))
+            patients.append(PatientResponse(**patient_data))
             
         return patients
     

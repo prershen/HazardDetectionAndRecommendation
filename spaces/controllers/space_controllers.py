@@ -1,5 +1,5 @@
 from pymongo.errors import DuplicateKeyError
-from spaces.models.space_models import Space, SpaceUpdate, SpaceCreate, SpaceLog, SpaceLogCreate, SpaceLogUpdate
+from spaces.models.space_models import Space, SpaceUpdate, SpaceCreate, SpaceLog, SpaceLogCreate, SpaceLogUpdate, SpaceResponse, SpaceLogResponse
 from pymongo.collection import Collection
 from bson.objectid import ObjectId
 from typing import Optional, List
@@ -49,10 +49,8 @@ class SpaceController:
         spaces_collection = db["spaces"]
         spaces_data = spaces_collection.find({"user_id": user_id})
 
-        spaces = []
-        for space_data in spaces_data:
-            spaces.append(Space(**space_data))
-        
+        spaces = [SpaceResponse(**space_data) for space_data in spaces_data]
+        print(f"Spaces: {spaces}")
         return spaces
 
     async def update_space(self, space_id: str, space_data: SpaceUpdate, db: Collection) -> Optional[Space]:
@@ -205,7 +203,7 @@ class SpaceLogController:
 
         logs = []
         for log_data in logs_data:
-            logs.append(SpaceLog(**log_data))
+            logs.append(SpaceLogResponse(**log_data))
         
         return logs
 

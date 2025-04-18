@@ -1,4 +1,4 @@
-from pydantic import BaseSettings
+from pydantic.v1 import BaseSettings
 from os import environ
 
 class Settings(BaseSettings):
@@ -7,6 +7,7 @@ class Settings(BaseSettings):
     jwt_secret: str = environ.get("JWT_SECRET")
     jwt_algorithm: str = "HS256"
     jwt_expiration_minutes: int = 2880 # 2 days
+    gemini_api_key: str = environ.get("GEMINI_API_KEY")
 
     class Config:
         env_file = ".env"
