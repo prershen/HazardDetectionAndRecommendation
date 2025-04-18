@@ -222,12 +222,24 @@ def _upload_blob(file):
     file_extension = file.filename.split('.')[-1]
     file_key = f"uploads/{uuid.uuid4()}.{file_extension}"
 
-    s3.upload_fileobj(
-        file.file,
-        bucket_name,
-        file_key,
-        ExtraArgs={"ContentType": file.content_type}
-    )
+    try:
+        if file_extension in [".jpg", ".jpeg", ".png"]:
+            s3.upload_file(
+            file,
+            bucket_name,
+            file_key)
+        else:
+            s3.upload_fileobj(
+                file.file,
+                bucket_name,
+                file_key,
+                ExtraArgs={"ContentType": file.content_type}
+            )
+    except Exception as e:
+        raise HTTPException(
+            status_code=500,
+            detail=f"s3 image upload failed: {str(e)}"
+        )
 
     file_url = f"https://{bucket_name}.s3.amazonaws.com/{file_key}"
 
@@ -420,7 +432,8 @@ async def upload_image(
         bounding_box_info, image_with_bb = _get_bounding_box(hazard_list, img)
         print("Bounding box: ", bounding_box_info)
 
-        bb_image_url = -_upload_blob(image_with_bb)
+        image_with_bb.save("temp_image.png", "PNG")
+        bb_image_url = -_upload_blob("temp_image.png")
 
         # Create the space log
         space_log_data = SpaceLogCreate(
