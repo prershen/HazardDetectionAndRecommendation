@@ -38,6 +38,7 @@ class SpaceController:
             raise ValueError(f"Space creation failed: {str(e)}")
 
     async def get_space_by_id(self, space_id: str, db: Collection) -> Optional[Space]:
+        print("Inside get_space_by_id")
         spaces_collection = db["spaces"]
         space_data = spaces_collection.find_one({"_id": ObjectId(space_id)}, sort=[("created_at", -1)])
 
