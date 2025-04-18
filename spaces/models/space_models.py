@@ -54,6 +54,7 @@ class SpaceLog(BaseModel):
     id: Optional[str] = Field(None, alias="_id")
     space_id: str
     image_data: str  # Base64 encoded image
+    image_bb: str
     score: Optional[float] = None
     bounding_box_info: List[BoundingBox] = [] #Dict[str, Any] = {}
     recommendations: Optional[List[str]] = []

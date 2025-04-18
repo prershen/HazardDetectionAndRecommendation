@@ -354,7 +354,7 @@ def _get_bounding_box(hazard_list, image):
     print("hazards texts: ", hazards)
     
     bounding_box_info = []
-    threshold = 0.25
+    threshold = 0.15
 
     try:
         print("Sending the inputs through processor")
@@ -376,7 +376,8 @@ def _get_bounding_box(hazard_list, image):
         visualized_image = unnormalized_image.copy()
         draw = ImageDraw.Draw(visualized_image)
         boxes, scores, labels = results[i]["boxes"], results[i]["scores"], results[i]["labels"]
-        for box, score, label in zip(boxes, scores, labels):
+        sorted_bb = sorted(list(zip(boxes, scores, labels)), key=lambda x:x[1], reverse=True)
+        for box, score, label in sorted_bb[:10]:
             box = [round(i, 2) for i in box.tolist()]
             print(f"Detected {text[label]} with confidence {round(score.item(), 3)} at location {box}")
             bb = BoundingBox(box, score, label)
