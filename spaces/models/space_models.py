@@ -118,13 +118,13 @@ class SpaceResponse(BaseModel):
 class SpaceLogResponse(BaseModel):
     id: Optional[str] = Field(None, alias="_id")
     space_id: str
-    image_data: str
+    image_data: Optional[str] = None
     score: Optional[float] = None
-    bounding_box_info: Dict[str, Any] = {}
-    recommendations: Optional[List[str]] = []
-    hazard_list: HazardList
+    bounding_box_info: Optional[Dict[str, Any]] = None
+    recommendations: Optional[List[str]] = None
+    hazard_list: Optional[HazardList] = None
     comments: Optional[str] = None
-    metadata: Dict[str, Any] = {}
+    metadata: Optional[Dict[str, Any]] = None
     created_at: Optional[datetime] = None
     updated_at: Optional[datetime] = None
     

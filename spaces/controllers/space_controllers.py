@@ -203,6 +203,7 @@ class SpaceLogController:
 
         logs = []
         for log_data in logs_data:
+            print(f"Log data: {log_data}")
             logs.append(SpaceLogResponse(**log_data))
         
         return logs

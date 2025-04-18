@@ -260,7 +260,6 @@ async def get_logs_by_space(
 ):
     # First verify that the space exists and belongs to the current user
     space = await space_controller.get_space_by_id(space_id, db)
-    
     if not space:
         raise HTTPException(status_code=404, detail="Space not found")
     
@@ -269,7 +268,6 @@ async def get_logs_by_space(
             status_code=status.HTTP_403_FORBIDDEN,
             detail="Not authorized to access logs for this space"
         )
-        
     logs = await space_log_controller.get_logs_by_space_id(space_id, db)
     return logs
 
