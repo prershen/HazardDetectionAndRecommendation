@@ -9,6 +9,7 @@ class Space(BaseModel):
     space_name: str
     user_id: str
     description: Optional[str] = None
+    patient_ids: List[str] = Field(default_factory=list)
     created_at: Optional[datetime] = Field(default_factory=datetime.now)
     updated_at: Optional[datetime] = Field(default_factory=datetime.now)
     
@@ -26,11 +27,13 @@ class SpaceCreate(BaseModel):
     space_name: str
     user_id: str
     description: Optional[str] = None
+    patient_ids: Optional[List[str]] = None
 
 
 class SpaceUpdate(BaseModel):
     space_name: Optional[str] = None
     description: Optional[str] = None
+    patient_ids: Optional[List[str]] = None
     
     class Config:
         allow_population_by_field_name = True
@@ -94,6 +97,7 @@ class SpaceResponse(BaseModel):
     space_name: str
     user_id: str
     description: Optional[str] = None
+    patient_ids: List[str] = Field(default_factory=list)
     created_at: Optional[datetime] = None
     updated_at: Optional[datetime] = None
     

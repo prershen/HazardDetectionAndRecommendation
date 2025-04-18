@@ -13,6 +13,11 @@ class SpaceController:
         try:
             # Create space dictionary
             space_dict = space_data.dict()
+            
+            # Set default empty list for patient_ids if not provided
+            if space_dict.get("patient_ids") is None:
+                space_dict["patient_ids"] = []
+                
             space_dict["created_at"] = datetime.now()
             space_dict["updated_at"] = datetime.now()
 
@@ -34,7 +39,7 @@ class SpaceController:
 
     async def get_space_by_id(self, space_id: str, db: Collection) -> Optional[Space]:
         spaces_collection = db["spaces"]
-        space_data = spaces_collection.find_one({"_id": ObjectId(space_id)})
+        space_data = spaces_collection.find_one({"_id": ObjectId(space_id)}, sort=[("created_at", -1)])
 
         if space_data:
             return Space(**space_data)
@@ -86,6 +91,62 @@ class SpaceController:
         result = spaces_collection.delete_one({"_id": ObjectId(space_id)})
         
         return result.deleted_count > 0
+
+    async def add_patient_to_space(self, space_id: str, patient_id: str, db: Collection) -> Optional[Space]:
+        spaces_collection = db["spaces"]
+        
+        try:
+            # Check if patient is already in the space
+            space = await self.get_space_by_id(space_id, db)
+            if not space:
+                raise ValueError(f"Space with ID {space_id} does not exist")
+                
+            if patient_id in space.patient_ids:
+                # Patient already in the space, nothing to do
+                return space
+                
+            # Add the patient to the space
+            updated_space = spaces_collection.find_one_and_update(
+                {"_id": ObjectId(space_id)},
+                {
+                    "$addToSet": {"patient_ids": patient_id},
+                    "$set": {"updated_at": datetime.now()}
+                },
+                return_document=True
+            )
+            
+            if updated_space:
+                return Space(**updated_space)
+            return None
+            
+        except Exception as e:
+            raise ValueError(f"Adding patient to space failed: {str(e)}")
+    
+    async def remove_patient_from_space(self, space_id: str, patient_id: str, db: Collection) -> Optional[Space]:
+        spaces_collection = db["spaces"]
+        
+        try:
+            # Check if space exists
+            space = await self.get_space_by_id(space_id, db)
+            if not space:
+                raise ValueError(f"Space with ID {space_id} does not exist")
+                
+            # Remove the patient from the space
+            updated_space = spaces_collection.find_one_and_update(
+                {"_id": ObjectId(space_id)},
+                {
+                    "$pull": {"patient_ids": patient_id},
+                    "$set": {"updated_at": datetime.now()}
+                },
+                return_document=True
+            )
+            
+            if updated_space:
+                return Space(**updated_space)
+            return None
+            
+        except Exception as e:
+            raise ValueError(f"Removing patient from space failed: {str(e)}")
 
 
 class SpaceLogController:
@@ -140,7 +201,7 @@ class SpaceLogController:
 
     async def get_logs_by_space_id(self, space_id: str, db: Collection) -> List[SpaceLog]:
         space_logs_collection = db["space_logs"]
-        logs_data = space_logs_collection.find({"space_id": space_id})
+        logs_data = space_logs_collection.find({"space_id": space_id}, sort=[("created_at", -1)])
 
         logs = []
         for log_data in logs_data:

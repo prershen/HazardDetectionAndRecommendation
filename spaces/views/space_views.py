@@ -8,10 +8,16 @@ from typing import List, Dict, Any, Optional
 import base64
 import json
 from datetime import datetime
+from pydantic import BaseModel
+from bson.objectid import ObjectId
 
 router = APIRouter()
 space_controller = SpaceController()
 space_log_controller = SpaceLogController()
+
+# New models for patient-space operations
+class PatientToSpaceRequest(BaseModel):
+    patient_id: str
 
 @router.post("/create", response_model=SpaceResponse)
 async def create_space(
@@ -340,4 +346,117 @@ async def delete_space_log(
     if not result:
         raise HTTPException(status_code=404, detail="Space log not found or deletion failed")
     
-    return {"message": "Space log deleted successfully"} 
+    return {"message": "Space log deleted successfully"}
+
+@router.post("/{space_id}/patients", response_model=SpaceResponse)
+async def add_patient_to_space(
+    space_id: str,
+    request: PatientToSpaceRequest,
+    db: Collection = Depends(get_db),
+    current_user_id: str = Depends(get_current_user)
+):
+    # First get the space to check ownership
+    space = await space_controller.get_space_by_id(space_id, db)
+    
+    if not space:
+        raise HTTPException(status_code=404, detail="Space not found")
+    
+    # Only allow users to update their own spaces
+    if space.user_id != current_user_id:
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="Not authorized to update this space"
+        )
+    
+    # Check if the patient exists in the database
+    patients_collection = db["patients"]
+    patient = patients_collection.find_one({"_id": ObjectId(request.patient_id)})
+    
+    if not patient:
+        raise HTTPException(status_code=404, detail="Patient not found")
+    
+    # Check if the patient belongs to the current user
+    if patient.get("user_id") != current_user_id:
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="Not authorized to add this patient to the space"
+        )
+    
+    try:
+        updated_space = await space_controller.add_patient_to_space(space_id, request.patient_id, db)
+        if not updated_space:
+            raise HTTPException(status_code=404, detail="Failed to add patient to space")
+        return updated_space
+    except ValueError as e:
+        raise HTTPException(status_code=400, detail=str(e))
+    except Exception as e:
+        raise HTTPException(
+            status_code=500,
+            detail=f"Failed to add patient to space: {str(e)}"
+        )
+
+@router.delete("/{space_id}/patients/{patient_id}", response_model=SpaceResponse)
+async def remove_patient_from_space(
+    space_id: str,
+    patient_id: str,
+    db: Collection = Depends(get_db),
+    current_user_id: str = Depends(get_current_user)
+):
+    # First get the space to check ownership
+    space = await space_controller.get_space_by_id(space_id, db)
+    
+    if not space:
+        raise HTTPException(status_code=404, detail="Space not found")
+    
+    # Only allow users to update their own spaces
+    if space.user_id != current_user_id:
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="Not authorized to update this space"
+        )
+    
+    try:
+        updated_space = await space_controller.remove_patient_from_space(space_id, patient_id, db)
+        if not updated_space:
+            raise HTTPException(status_code=404, detail="Failed to remove patient from space")
+        return updated_space
+    except ValueError as e:
+        raise HTTPException(status_code=400, detail=str(e))
+    except Exception as e:
+        raise HTTPException(
+            status_code=500,
+            detail=f"Failed to remove patient from space: {str(e)}"
+        )
+
+@router.get("/{space_id}/patients")
+async def get_patients_in_space(
+    space_id: str,
+    db: Collection = Depends(get_db),
+    current_user_id: str = Depends(get_current_user)
+):
+    # First get the space to check ownership
+    space = await space_controller.get_space_by_id(space_id, db)
+    
+    if not space:
+        raise HTTPException(status_code=404, detail="Space not found")
+    
+    # Only allow users to view their own spaces
+    if space.user_id != current_user_id:
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="Not authorized to view patients in this space"
+        )
+    
+    if not space.patient_ids:
+        return []
+    
+    # Fetch patient details
+    patients_collection = db["patients"]
+    patients = list(patients_collection.find({"_id": {"$in": [ObjectId(pid) for pid in space.patient_ids]}}))
+    
+    # Convert ObjectId to string for each patient
+    for patient in patients:
+        if "_id" in patient:
+            patient["_id"] = str(patient["_id"])
+    
+    return patients 

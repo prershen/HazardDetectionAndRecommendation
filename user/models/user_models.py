@@ -10,6 +10,7 @@ class User(BaseModel):
     first_name: Optional[str] = None
     last_name: Optional[str] = None
     phone_number: Optional[str] = None
+    emergency_contact: Optional[str] = None
     hashed_password: Optional[str] = None
     
     class Config:
@@ -28,6 +29,7 @@ class UserUpdate(BaseModel):
     first_name: Optional[str]
     last_name: Optional[str]
     phone_number: Optional[str]
+    emergency_contact: Optional[str] = None
     hashed_password: Optional[str]
 
     class Config:
@@ -41,7 +43,7 @@ class UserCreate(BaseModel):
     first_name: Optional[str] = None
     last_name: Optional[str] = None
     phone_number: Optional[str] = None
-
+    emergency_contact: Optional[str] = None
 
 class UserLogin(BaseModel):
     username: str
@@ -60,6 +62,7 @@ class UserResponse(BaseModel):
     first_name: Optional[str] = None
     last_name: Optional[str] = None
     phone_number: Optional[str] = None
+    emergency_contact: Optional[str] = None
     
     class Config:
         allow_population_by_field_name = True
