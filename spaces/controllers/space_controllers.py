@@ -38,11 +38,12 @@ class SpaceController:
             raise ValueError(f"Space creation failed: {str(e)}")
 
     async def get_space_by_id(self, space_id: str, db: Collection) -> Optional[Space]:
+        print("Inside get_space_by_id")
         spaces_collection = db["spaces"]
         space_data = spaces_collection.find_one({"_id": ObjectId(space_id)}, sort=[("created_at", -1)])
 
         if space_data:
-            return Space(**space_data)
+            return SpaceResponse(**space_data)
         return None
 
     async def get_spaces_by_user_id(self, user_id: str, db: Collection) -> List[Space]:
@@ -150,13 +151,14 @@ class SpaceController:
 class SpaceLogController:
     async def create_space_log(self, space_log_data: SpaceLogCreate, db: Collection) -> Optional[SpaceLog]:
         space_logs_collection = db["space_logs"]
-        
+        print("Inside create_space_log")
         try:
             # First verify that the space exists
             spaces_collection = db["spaces"]
             space = spaces_collection.find_one({"_id": ObjectId(space_log_data.space_id)})
             
             if not space:
+                print(f"Space with ID {space_log_data.space_id} does not exist")
                 raise ValueError(f"Space with ID {space_log_data.space_id} does not exist")
             
             # Create space log dictionary
@@ -175,12 +177,14 @@ class SpaceLogController:
 
             # Insert the space log data into the collection
             result = space_logs_collection.insert_one(space_log_dict)
+            print("Result: ", result)
 
             # Fetch the inserted document
             created_log = space_logs_collection.find_one(
                 {"_id": result.inserted_id})
 
             if created_log is None:
+                print("Created log is None")
                 raise ValueError("Space log was not created successfully.")
 
             return SpaceLog(**created_log)
@@ -203,7 +207,6 @@ class SpaceLogController:
 
         logs = []
         for log_data in logs_data:
-            print(f"Log data: {log_data}")
             logs.append(SpaceLogResponse(**log_data))
         
         return logs
