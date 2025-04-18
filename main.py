@@ -3,7 +3,10 @@ from fastapi import FastAPI
 from pymongo import MongoClient
 from core.config import settings
 from user.views import user_views
+from spaces.views import space_views
+from patients.views import patient_views
 from fastapi.middleware.cors import CORSMiddleware
+from patients.db.indexes import create_patient_indexes
 
 app = FastAPI()
 
@@ -24,6 +27,10 @@ async def connect_to_db():
     global client
     client = MongoClient(settings.mongo_uri)
     print("Connected to the database")
+    
+    # Create indexes
+    db = client[settings.database_name]
+    create_patient_indexes(db)
 
 @app.on_event("shutdown")
 async def close_db_connection():
@@ -40,3 +47,5 @@ async def read_root():
     }
 
 app.include_router(user_views.router, prefix="/user")
+app.include_router(space_views.router, prefix="/space")
+app.include_router(patient_views.router, prefix="/patient")
