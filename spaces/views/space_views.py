@@ -440,7 +440,7 @@ def _get_bounding_box(hazard_list, image):
     print("hazards texts: ", hazards)
     
     bounding_box_info = []
-    threshold = 0.15
+    threshold = 0.3
 
     try:
         print("Sending the inputs through processor")
@@ -481,7 +481,7 @@ def _get_bounding_box(hazard_list, image):
             else:
                 print("label in low priority: ", label)
                 low_priority_sorted_bb.append((box, score, label))
-        iter_list = remove_duplicates(high_priority_sorted_bb + medium_priority_sorted_bb)
+        iter_list = high_priority_sorted_bb + medium_priority_sorted_bb
         print("iter_list: ", iter_list)
         for box, score, label in iter_list:
             box = [round(i, 2) for i in box.tolist()]

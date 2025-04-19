@@ -8,6 +8,7 @@ class Patient(BaseModel):
     patient_name: str
     user_id: str
     patient_condition: str
+    patient_relationship: Optional[str] = None
     patient_age: int
     medical_history: Optional[str] = None
     
@@ -24,6 +25,7 @@ class Patient(BaseModel):
 class PatientCreate(BaseModel):
     patient_name: str
     patient_condition: str
+    patient_relationship: Optional[str] = None
     patient_age: int
     medical_history: Optional[str] = None
 
@@ -31,6 +33,7 @@ class PatientCreate(BaseModel):
 class PatientUpdate(BaseModel):
     patient_name: Optional[str] = None
     patient_condition: Optional[str] = None
+    patient_relationship: Optional[str] = None
     patient_age: Optional[int] = None
     medical_history: Optional[str] = None
 
@@ -40,6 +43,7 @@ class PatientResponse(BaseModel):
     patient_name: str
     user_id: str
     patient_condition: str
+    patient_relationship: Optional[str] = None
     patient_age: int
     medical_history: Optional[str] = None
     

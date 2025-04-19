@@ -1,896 +1,449 @@
 INFO:     Will watch for changes in these directories: ['/home/prathik-somanath/git/responsible/backend-server']
 INFO:     Uvicorn running on http://0.0.0.0:4000 (Press CTRL+C to quit)
-INFO:     Started reloader process [917184] using StatReload
+INFO:     Started reloader process [927498] using StatReload
 /home/prathik-somanath/git/responsible/backend-server/venv/lib/python3.12/site-packages/pydantic/_internal/_config.py:373: UserWarning: Valid config keys have changed in V2:
 * 'allow_population_by_field_name' has been renamed to 'validate_by_name'
   warnings.warn(message, UserWarning)
-INFO:     Started server process [917186]
-INFO:     Waiting for application startup.
-INFO:     Application startup complete.
+Process SpawnProcess-1:
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.12/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/prathik-somanath/git/responsible/backend-server/venv/lib/python3.12/site-packages/uvicorn/_subprocess.py", line 76, in subprocess_started
+    target(sockets=sockets)
+  File "/home/prathik-somanath/git/responsible/backend-server/venv/lib/python3.12/site-packages/uvicorn/server.py", line 61, in run
+    return asyncio.run(self.serve(sockets=sockets))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/asyncio/runners.py", line 194, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/asyncio/base_events.py", line 687, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/home/prathik-somanath/git/responsible/backend-server/venv/lib/python3.12/site-packages/uvicorn/server.py", line 68, in serve
+    config.load()
+  File "/home/prathik-somanath/git/responsible/backend-server/venv/lib/python3.12/site-packages/uvicorn/config.py", line 473, in load
+    self.loaded_app = import_from_string(self.app)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/prathik-somanath/git/responsible/backend-server/venv/lib/python3.12/site-packages/uvicorn/importer.py", line 21, in import_from_string
+    module = importlib.import_module(module_str)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/importlib/__init__.py", line 90, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/home/prathik-somanath/git/responsible/backend-server/main.py", line 9, in <module>
+    from chat_agent.router import router as chat_agent_router
+  File "/home/prathik-somanath/git/responsible/backend-server/chat_agent/__init__.py", line 1
+    \ 
+     ^
+SyntaxError: unexpected character after line continuation character
 Unique indexes created on username and email.
-Connected to the database
-INFO:     2603:8000:ba00:2aae:dde4:c975:a41f:61d0:0 - "GET /patient HTTP/1.1" 307 Temporary Redirect
-Decoding token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODAwMzI5MTBmODVmMzUyMGI5ZWE5NzciLCJleHAiOjE3NDUxNzYwMDN9.bZwACIluQ9CNqVDSz9Vzvl5ppHor9KfKVrrzhr2xShU
-Payload: {'sub': '680032910f85f3520b9ea977', 'exp': 1745176003}
-INFO:     2603:8000:ba00:2aae:dde4:c975:a41f:61d0:0 - "GET /patient/ HTTP/1.1" 200 OK
-Decoding token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODAwMzI5MTBmODVmMzUyMGI5ZWE5NzciLCJleHAiOjE3NDUxNzYwMDN9.bZwACIluQ9CNqVDSz9Vzvl5ppHor9KfKVrrzhr2xShU
-Payload: {'sub': '680032910f85f3520b9ea977', 'exp': 1745176003}
-INFO:     2603:8000:ba00:2aae:dde4:c975:a41f:61d0:0 - "POST /space/create HTTP/1.1" 422 Unprocessable Entity
-WARNING:  StatReload detected changes in 'spaces/views/space_views.py'. Reloading...
-INFO:     Shutting down
-INFO:     Waiting for application shutdown.
-INFO:     Application shutdown complete.
-INFO:     Finished server process [917186]
-Database connection closed
+WARNING:  StatReload detected changes in 'chat_agent/__init__.py'. Reloading...
 /home/prathik-somanath/git/responsible/backend-server/venv/lib/python3.12/site-packages/pydantic/_internal/_config.py:373: UserWarning: Valid config keys have changed in V2:
 * 'allow_population_by_field_name' has been renamed to 'validate_by_name'
   warnings.warn(message, UserWarning)
-INFO:     Started server process [917435]
-INFO:     Waiting for application startup.
-INFO:     Application startup complete.
-WARNING:  StatReload detected changes in 'spaces/views/space_views.py'. Reloading...
-INFO:     Shutting down
-INFO:     Waiting for application shutdown.
-INFO:     Application shutdown complete.
-INFO:     Finished server process [917435]
+Process SpawnProcess-2:
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.12/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/prathik-somanath/git/responsible/backend-server/venv/lib/python3.12/site-packages/uvicorn/_subprocess.py", line 76, in subprocess_started
+    target(sockets=sockets)
+  File "/home/prathik-somanath/git/responsible/backend-server/venv/lib/python3.12/site-packages/uvicorn/server.py", line 61, in run
+    return asyncio.run(self.serve(sockets=sockets))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/asyncio/runners.py", line 194, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/asyncio/base_events.py", line 687, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/home/prathik-somanath/git/responsible/backend-server/venv/lib/python3.12/site-packages/uvicorn/server.py", line 68, in serve
+    config.load()
+  File "/home/prathik-somanath/git/responsible/backend-server/venv/lib/python3.12/site-packages/uvicorn/config.py", line 473, in load
+    self.loaded_app = import_from_string(self.app)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/prathik-somanath/git/responsible/backend-server/venv/lib/python3.12/site-packages/uvicorn/importer.py", line 21, in import_from_string
+    module = importlib.import_module(module_str)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/importlib/__init__.py", line 90, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/home/prathik-somanath/git/responsible/backend-server/main.py", line 9, in <module>
+    from chat_agent.router import router as chat_agent_router
+  File "/home/prathik-somanath/git/responsible/backend-server/chat_agent/router.py", line 5, in <module>
+    from .agent import run_conversation_turn
+  File "/home/prathik-somanath/git/responsible/backend-server/chat_agent/agent.py", line 20
+    ("system", "You are a helpful assistant for the Responsible application. 
+               ^
+SyntaxError: unterminated string literal (detected at line 20)
 Unique indexes created on username and email.
-Connected to the database
-Database connection closed
+WARNING:  StatReload detected changes in 'main.py'. Reloading...
 /home/prathik-somanath/git/responsible/backend-server/venv/lib/python3.12/site-packages/pydantic/_internal/_config.py:373: UserWarning: Valid config keys have changed in V2:
 * 'allow_population_by_field_name' has been renamed to 'validate_by_name'
   warnings.warn(message, UserWarning)
-INFO:     Started server process [917547]
-INFO:     Waiting for application startup.
-INFO:     Application startup complete.
+Process SpawnProcess-3:
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.12/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/prathik-somanath/git/responsible/backend-server/venv/lib/python3.12/site-packages/uvicorn/_subprocess.py", line 76, in subprocess_started
+    target(sockets=sockets)
+  File "/home/prathik-somanath/git/responsible/backend-server/venv/lib/python3.12/site-packages/uvicorn/server.py", line 61, in run
+    return asyncio.run(self.serve(sockets=sockets))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/asyncio/runners.py", line 194, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/asyncio/base_events.py", line 687, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/home/prathik-somanath/git/responsible/backend-server/venv/lib/python3.12/site-packages/uvicorn/server.py", line 68, in serve
+    config.load()
+  File "/home/prathik-somanath/git/responsible/backend-server/venv/lib/python3.12/site-packages/uvicorn/config.py", line 473, in load
+    self.loaded_app = import_from_string(self.app)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/prathik-somanath/git/responsible/backend-server/venv/lib/python3.12/site-packages/uvicorn/importer.py", line 21, in import_from_string
+    module = importlib.import_module(module_str)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/importlib/__init__.py", line 90, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/home/prathik-somanath/git/responsible/backend-server/main.py", line 10, in <module>
+    from chat_agent.database import get_database_client, close_database_client
+  File "/home/prathik-somanath/git/responsible/backend-server/chat_agent/database.py", line 2, in <module>
+    from .config import MONGODB_URI, DB_NAME
+  File "/home/prathik-somanath/git/responsible/backend-server/chat_agent/config.py", line 11, in <module>
+    raise ValueError("GOOGLE_API_KEY environment variable not set.")
+ValueError: GOOGLE_API_KEY environment variable not set.
 Unique indexes created on username and email.
-Connected to the database
-Decoding token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODAwMzI5MTBmODVmMzUyMGI5ZWE5NzciLCJleHAiOjE3NDUxNzYwMDN9.bZwACIluQ9CNqVDSz9Vzvl5ppHor9KfKVrrzhr2xShU
-Payload: {'sub': '680032910f85f3520b9ea977', 'exp': 1745176003}
-INFO:     2603:8000:ba00:2aae:dde4:c975:a41f:61d0:0 - "POST /space/create HTTP/1.1" 422 Unprocessable Entity
-INFO:     2603:8000:ba00:2aae:dde4:c975:a41f:61d0:0 - "GET /patient HTTP/1.1" 307 Temporary Redirect
-Decoding token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODAwMzI5MTBmODVmMzUyMGI5ZWE5NzciLCJleHAiOjE3NDUxNzYwMDN9.bZwACIluQ9CNqVDSz9Vzvl5ppHor9KfKVrrzhr2xShU
-Payload: {'sub': '680032910f85f3520b9ea977', 'exp': 1745176003}
-INFO:     2603:8000:ba00:2aae:dde4:c975:a41f:61d0:0 - "GET /patient/ HTTP/1.1" 200 OK
-INFO:     2603:8000:ba00:2aae:dde4:c975:a41f:61d0:0 - "GET /patient HTTP/1.1" 307 Temporary Redirect
-Decoding token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODAwMzI5MTBmODVmMzUyMGI5ZWE5NzciLCJleHAiOjE3NDUxNzYwMDN9.bZwACIluQ9CNqVDSz9Vzvl5ppHor9KfKVrrzhr2xShU
-Payload: {'sub': '680032910f85f3520b9ea977', 'exp': 1745176003}
-INFO:     2603:8000:ba00:2aae:dde4:c975:a41f:61d0:0 - "GET /patient/ HTTP/1.1" 200 OK
-Decoding token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODAwMzI5MTBmODVmMzUyMGI5ZWE5NzciLCJleHAiOjE3NDUxNzYwMDN9.bZwACIluQ9CNqVDSz9Vzvl5ppHor9KfKVrrzhr2xShU
-Payload: {'sub': '680032910f85f3520b9ea977', 'exp': 1745176003}
-Creating space:  space_name='Bedroom' user_id='680032910f85f3520b9ea977' description='Master bedroom' patient_ids=['680195f77604a4525291c0e9', '6801a0dbdfc8881e853afff4']
-INFO:     2603:8000:ba00:2aae:dde4:c975:a41f:61d0:0 - "POST /space/create HTTP/1.1" 200 OK
-Decoding token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODAwMzI5MTBmODVmMzUyMGI5ZWE5NzciLCJleHAiOjE3NDUxNzYwMDN9.bZwACIluQ9CNqVDSz9Vzvl5ppHor9KfKVrrzhr2xShU
-Payload: {'sub': '680032910f85f3520b9ea977', 'exp': 1745176003}
-Spaces: [SpaceResponse(id='6800bd08b9f934916a772c00', space_name='Living Room 1', user_id='680032910f85f3520b9ea977', description='Main living area with furniture and electronics', patient_ids=['680195f77604a4525291c0e9', '6801a0dbdfc8881e853afff4'], created_at=datetime.datetime(2025, 4, 17, 1, 34, 16, 284000), updated_at=datetime.datetime(2025, 4, 17, 17, 46, 30, 324000)), SpaceResponse(id='6802f5b9b00925a45ffb34f3', space_name='Bedroom', user_id='680032910f85f3520b9ea977', description='Master bedroom', patient_ids=['680195f77604a4525291c0e9', '6801a0dbdfc8881e853afff4'], created_at=datetime.datetime(2025, 4, 18, 18, 0, 41, 511000), updated_at=datetime.datetime(2025, 4, 18, 18, 0, 41, 511000))]
-INFO:     2603:8000:ba00:2aae:dde4:c975:a41f:61d0:0 - "GET /space/user HTTP/1.1" 200 OK
-INFO:     2603:8000:ba00:2aae:dde4:c975:a41f:61d0:0 - "GET /patient HTTP/1.1" 307 Temporary Redirect
-Decoding token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODAwMzI5MTBmODVmMzUyMGI5ZWE5NzciLCJleHAiOjE3NDUxNzYwMDN9.bZwACIluQ9CNqVDSz9Vzvl5ppHor9KfKVrrzhr2xShU
-Payload: {'sub': '680032910f85f3520b9ea977', 'exp': 1745176003}
-INFO:     2603:8000:ba00:2aae:dde4:c975:a41f:61d0:0 - "GET /patient/ HTTP/1.1" 200 OK
-Decoding token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODAwMzI5MTBmODVmMzUyMGI5ZWE5NzciLCJleHAiOjE3NDUxNzYwMDN9.bZwACIluQ9CNqVDSz9Vzvl5ppHor9KfKVrrzhr2xShU
-Payload: {'sub': '680032910f85f3520b9ea977', 'exp': 1745176003}
-Inside get_space_by_id
-INFO:     2603:8000:ba00:2aae:dde4:c975:a41f:61d0:0 - "GET /space/6802f5b9b00925a45ffb34f3 HTTP/1.1" 200 OK
-Decoding token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODAwMzI5MTBmODVmMzUyMGI5ZWE5NzciLCJleHAiOjE3NDUxNzYwMDN9.bZwACIluQ9CNqVDSz9Vzvl5ppHor9KfKVrrzhr2xShU
-Payload: {'sub': '680032910f85f3520b9ea977', 'exp': 1745176003}
-Inside get_space_by_id
-INFO:     2603:8000:ba00:2aae:dde4:c975:a41f:61d0:0 - "GET /space/logs/space/6802f5b9b00925a45ffb34f3 HTTP/1.1" 200 OK
-INFO:     2603:8000:ba00:2aae:dde4:c975:a41f:61d0:0 - "GET /patient HTTP/1.1" 307 Temporary Redirect
-Decoding token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODAwMzI5MTBmODVmMzUyMGI5ZWE5NzciLCJleHAiOjE3NDUxNzYwMDN9.bZwACIluQ9CNqVDSz9Vzvl5ppHor9KfKVrrzhr2xShU
-Payload: {'sub': '680032910f85f3520b9ea977', 'exp': 1745176003}
-INFO:     2603:8000:ba00:2aae:dde4:c975:a41f:61d0:0 - "GET /patient/ HTTP/1.1" 200 OK
-Decoding token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODAwMzI5MTBmODVmMzUyMGI5ZWE5NzciLCJleHAiOjE3NDUxNzYwMDN9.bZwACIluQ9CNqVDSz9Vzvl5ppHor9KfKVrrzhr2xShU
-Payload: {'sub': '680032910f85f3520b9ea977', 'exp': 1745176003}
-Inside upload_image with space_id  6802f5b9b00925a45ffb34f3
-Inside get_space_by_id
-Contents type:  <class 'bytes'>
-Image type:  <class 'PIL.JpegImagePlugin.JpegImageFile'>
-Sending request with /home/prathik-somanath/git/responsible/backend-server/temp_image.png to riskitfree as b9f99b9f-3b4d-499d-be94-448850038f85.png
-Uploaading image to  s3
-File uploaded to s3 b9f99b9f-3b4d-499d-be94-448850038f85.png
-File /home/prathik-somanath/git/responsible/backend-server/temp_image.png uploaded to b9f99b9f-3b4d-499d-be94-448850038f85.png.
-Getting patient info for  ['680195f77604a4525291c0e9', '6801a0dbdfc8881e853afff4']
-Getting hazards and recommendations
-Inside _get_hazards_and_recommendations
-Encoded image:  <class 'str'>
-Prompt of condition:  User has a condition: Knee pain. User has a condition: Old age. 
-Hazards:  [Hazard(priority='High Priority', description='Unstable chair with wheels', score=0.9), Hazard(priority='High Priority', description='Cluttered floor near desk and bed', score=0.85), Hazard(priority='High Priority', description='Restricted walking path between bed, desk, and door', score=0.8), Hazard(priority='Medium Priority', description='Slippery flooring', score=0.7), Hazard(priority='Medium Priority', description='Poor lighting', score=0.6), Hazard(priority='Low Priority', description='Sharp edges on furniture', score=0.5), Hazard(priority='Low Priority', description='Loose wires or cords', score=0.5)]
-Recommendations:  ['Replace the chair with a stable one without wheels to reduce the risk of falls.', 'Organize and declutter items on the floor, especially near the desk and bed, to prevent tripping hazards.', 'Ensure adequate lighting in the room to improve visibility and reduce the risk of tripping.', 'Consider using non-slip mats or rugs to provide better traction, especially in areas where the flooring may be slippery.', 'Remove or secure any loose wires or cords to eliminate tripping hazards.', 'Make sure the walking path between the bed, desk, and door is clear and wide enough to accommodate easy movement.', 'Consider using a mobility aid, such as a cane or walker, if needed, to provide additional support and stability.', 'Move the desk away from the bed to widen the walking path.', 'Secure or remove any sharp edges on furniture to prevent injuries from falls.', 'Ensure that frequently used items are easily accessible to reduce the need for reaching or bending.', 'Install grab bars in the bathroom to provide additional support and stability.', 'Schedule regular check-ups with a healthcare provider to monitor knee pain and overall health.', 'Consider physical therapy to improve strength and flexibility and reduce knee pain.', 'Use assistive devices, such as a reacher or grabber, to avoid bending or stretching.', 'Wear supportive shoes with good traction to prevent falls and provide comfort for knee pain.', 'Avoid rushing or sudden movements, which can increase the risk of falls or exacerbate knee pain.', 'Take breaks when needed to rest and avoid overexertion.']
-Walking path score:  0.6
-hazard_list:  high_priority=['Unstable chair with wheels', 'Cluttered floor near desk and bed', 'Restricted walking path between bed, desk, and door'] medium_priority=['Slippery flooring', 'Poor lighting'] low_priority=['Sharp edges on furniture', 'Loose wires or cords']
-Inside _get_risk_score
-Risk score:  75
-Safety Score:  70.0
-Inside _get_bounding_box
-hazards texts:  [['Unstable chair with wheels', 'Cluttered floor near desk and bed', 'Restricted walking path between bed, desk, and door', 'Slippery flooring', 'Poor lighting', 'Sharp edges on furniture', 'Loose wires or cords']]
-Sending the inputs through processor
-Forward pass
-Get preprocessed image
-Sending post_process_grounded_object_detection with threshold  0.15
-Bounding box:  []
-Sending request with /home/prathik-somanath/git/responsible/backend-server/temp_image.png to riskitfree as 16964934-8362-4d7e-b9d4-4c8b5598aaf4.png
-Uploaading image to  s3
-File uploaded to s3 16964934-8362-4d7e-b9d4-4c8b5598aaf4.png
-File /home/prathik-somanath/git/responsible/backend-server/temp_image.png uploaded to 16964934-8362-4d7e-b9d4-4c8b5598aaf4.png.
-Inside create_space_log
-Result:  InsertOneResult(ObjectId('6802f5f2b00925a45ffb34f4'), acknowledged=True)
-INFO:     2603:8000:ba00:2aae:dde4:c975:a41f:61d0:0 - "POST /space/logs/upload-image HTTP/1.1" 200 OK
-Decoding token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODAwMzI5MTBmODVmMzUyMGI5ZWE5NzciLCJleHAiOjE3NDUxNzYwMDN9.bZwACIluQ9CNqVDSz9Vzvl5ppHor9KfKVrrzhr2xShU
-Payload: {'sub': '680032910f85f3520b9ea977', 'exp': 1745176003}
-Inside get_space_by_id
-INFO:     2603:8000:ba00:2aae:dde4:c975:a41f:61d0:0 - "GET /space/6802f5b9b00925a45ffb34f3 HTTP/1.1" 200 OK
-Decoding token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODAwMzI5MTBmODVmMzUyMGI5ZWE5NzciLCJleHAiOjE3NDUxNzYwMDN9.bZwACIluQ9CNqVDSz9Vzvl5ppHor9KfKVrrzhr2xShU
-Payload: {'sub': '680032910f85f3520b9ea977', 'exp': 1745176003}
-Inside get_space_by_id
-INFO:     2603:8000:ba00:2aae:dde4:c975:a41f:61d0:0 - "GET /space/logs/space/6802f5b9b00925a45ffb34f3 HTTP/1.1" 200 OK
-INFO:     2603:8000:ba00:2aae:dde4:c975:a41f:61d0:0 - "GET /patient HTTP/1.1" 307 Temporary Redirect
-Decoding token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODAwMzI5MTBmODVmMzUyMGI5ZWE5NzciLCJleHAiOjE3NDUxNzYwMDN9.bZwACIluQ9CNqVDSz9Vzvl5ppHor9KfKVrrzhr2xShU
-Payload: {'sub': '680032910f85f3520b9ea977', 'exp': 1745176003}
-INFO:     2603:8000:ba00:2aae:dde4:c975:a41f:61d0:0 - "GET /patient/ HTTP/1.1" 200 OK
-Decoding token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODAwMzI5MTBmODVmMzUyMGI5ZWE5NzciLCJleHAiOjE3NDUxNzYwMDN9.bZwACIluQ9CNqVDSz9Vzvl5ppHor9KfKVrrzhr2xShU
-Payload: {'sub': '680032910f85f3520b9ea977', 'exp': 1745176003}
-Inside get_space_by_id
-INFO:     2603:8000:ba00:2aae:dde4:c975:a41f:61d0:0 - "GET /space/logs/6802f5f2b00925a45ffb34f4 HTTP/1.1" 200 OK
-WARNING:  StatReload detected changes in 'spaces/views/space_views.py'. Reloading...
-INFO:     Shutting down
-INFO:     Waiting for application shutdown.
-INFO:     Application shutdown complete.
-INFO:     Finished server process [917547]
-Database connection closed
+WARNING:  StatReload detected changes in 'main.py'. Reloading...
 /home/prathik-somanath/git/responsible/backend-server/venv/lib/python3.12/site-packages/pydantic/_internal/_config.py:373: UserWarning: Valid config keys have changed in V2:
 * 'allow_population_by_field_name' has been renamed to 'validate_by_name'
   warnings.warn(message, UserWarning)
-INFO:     Started server process [918624]
-INFO:     Waiting for application startup.
-INFO:     Application startup complete.
-WARNING:  StatReload detected changes in 'spaces/views/space_views.py'. Reloading...
-INFO:     Shutting down
-INFO:     Waiting for application shutdown.
-INFO:     Application shutdown complete.
-INFO:     Finished server process [918624]
+Process SpawnProcess-4:
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.12/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/prathik-somanath/git/responsible/backend-server/venv/lib/python3.12/site-packages/uvicorn/_subprocess.py", line 76, in subprocess_started
+    target(sockets=sockets)
+  File "/home/prathik-somanath/git/responsible/backend-server/venv/lib/python3.12/site-packages/uvicorn/server.py", line 61, in run
+    return asyncio.run(self.serve(sockets=sockets))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/asyncio/runners.py", line 194, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/asyncio/base_events.py", line 687, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/home/prathik-somanath/git/responsible/backend-server/venv/lib/python3.12/site-packages/uvicorn/server.py", line 68, in serve
+    config.load()
+  File "/home/prathik-somanath/git/responsible/backend-server/venv/lib/python3.12/site-packages/uvicorn/config.py", line 473, in load
+    self.loaded_app = import_from_string(self.app)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/prathik-somanath/git/responsible/backend-server/venv/lib/python3.12/site-packages/uvicorn/importer.py", line 21, in import_from_string
+    module = importlib.import_module(module_str)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/importlib/__init__.py", line 90, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/home/prathik-somanath/git/responsible/backend-server/main.py", line 10, in <module>
+    from chat_agent.database import get_database_client, close_database_client
+  File "/home/prathik-somanath/git/responsible/backend-server/chat_agent/database.py", line 2, in <module>
+    from .config import MONGODB_URI, DB_NAME
+  File "/home/prathik-somanath/git/responsible/backend-server/chat_agent/config.py", line 11, in <module>
+    raise ValueError("GOOGLE_API_KEY environment variable not set.")
+ValueError: GOOGLE_API_KEY environment variable not set.
 Unique indexes created on username and email.
-Connected to the database
-Database connection closed
+WARNING:  StatReload detected changes in 'main.py'. Reloading...
 /home/prathik-somanath/git/responsible/backend-server/venv/lib/python3.12/site-packages/pydantic/_internal/_config.py:373: UserWarning: Valid config keys have changed in V2:
 * 'allow_population_by_field_name' has been renamed to 'validate_by_name'
   warnings.warn(message, UserWarning)
-INFO:     Started server process [919007]
-INFO:     Waiting for application startup.
-INFO:     Application startup complete.
+Process SpawnProcess-5:
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.12/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/prathik-somanath/git/responsible/backend-server/venv/lib/python3.12/site-packages/uvicorn/_subprocess.py", line 76, in subprocess_started
+    target(sockets=sockets)
+  File "/home/prathik-somanath/git/responsible/backend-server/venv/lib/python3.12/site-packages/uvicorn/server.py", line 61, in run
+    return asyncio.run(self.serve(sockets=sockets))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/asyncio/runners.py", line 194, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/asyncio/base_events.py", line 687, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/home/prathik-somanath/git/responsible/backend-server/venv/lib/python3.12/site-packages/uvicorn/server.py", line 68, in serve
+    config.load()
+  File "/home/prathik-somanath/git/responsible/backend-server/venv/lib/python3.12/site-packages/uvicorn/config.py", line 473, in load
+    self.loaded_app = import_from_string(self.app)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/prathik-somanath/git/responsible/backend-server/venv/lib/python3.12/site-packages/uvicorn/importer.py", line 21, in import_from_string
+    module = importlib.import_module(module_str)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/importlib/__init__.py", line 90, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/home/prathik-somanath/git/responsible/backend-server/main.py", line 9, in <module>
+    from chat_agent.router import router as chat_agent_router
+  File "/home/prathik-somanath/git/responsible/backend-server/chat_agent/router.py", line 5, in <module>
+    from .agent import run_conversation_turn
+  File "/home/prathik-somanath/git/responsible/backend-server/chat_agent/agent.py", line 20
+    ("system", "You are a helpful assistant for the Responsible application. 
+               ^
+SyntaxError: unterminated string literal (detected at line 20)
 Unique indexes created on username and email.
-Connected to the database
-Decoding token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODAwMzI5MTBmODVmMzUyMGI5ZWE5NzciLCJleHAiOjE3NDUxNzYwMDN9.bZwACIluQ9CNqVDSz9Vzvl5ppHor9KfKVrrzhr2xShU
-Payload: {'sub': '680032910f85f3520b9ea977', 'exp': 1745176003}
-Inside upload_image with space_id  6802f5b9b00925a45ffb34f3
-Inside get_space_by_id
-Contents type:  <class 'bytes'>
-Image type:  <class 'PIL.JpegImagePlugin.JpegImageFile'>
-Sending request with /home/prathik-somanath/git/responsible/backend-server/temp_image.png to riskitfree as 8baa02ff-d0cc-4998-a2ef-2700cfff6406.png
-Uploaading image to  s3
-File uploaded to s3 8baa02ff-d0cc-4998-a2ef-2700cfff6406.png
-File /home/prathik-somanath/git/responsible/backend-server/temp_image.png uploaded to 8baa02ff-d0cc-4998-a2ef-2700cfff6406.png.
-Getting patient info for  ['680195f77604a4525291c0e9', '6801a0dbdfc8881e853afff4']
-Getting hazards and recommendations
-Inside _get_hazards_and_recommendations
-Encoded image:  <class 'str'>
-Prompt of condition:  User has a condition: Knee pain. User has a condition: Old age. 
-Hazards:  [Hazard(priority='High', description='Clutter and bags near the desk create tripping hazards', score=0.9), Hazard(priority='High', description='Uneven flooring or slippery surfaces', score=0.85), Hazard(priority='High', description='Low bed height', score=0.8), Hazard(priority='Medium', description='Chair with wheels', score=0.75), Hazard(priority='Medium', description='Poor lighting near bed', score=0.7), Hazard(priority='Medium', description='Loose wires or cords', score=0.65), Hazard(priority='Medium', description='Items on top of the shelf may fall', score=0.6), Hazard(priority='Low', description='Bed too close to the door', score=0.55), Hazard(priority='Low', description='Shelf is not properly installed', score=0.5), Hazard(priority='Low', description='Storage boxes near the bed', score=0.45), Hazard(priority='Low', description='Difficulty reaching items on shelves', score=0.4)]
-Recommendations:  ['Remove the clutter and bags near the desk and along the walking path to prevent tripping.', "Adjust the height of the bed if it's too low or too high, making it easier to get in and out of bed.", 'Ensure adequate lighting throughout the room, especially near the bed and walking paths.', 'Secure or remove any loose wires or cords to prevent tripping hazards.', 'Consider a stable chair without wheels.', 'Install grab bars in the bathroom (not visible, but a common need for elderly with knee pain).', 'Place frequently used items within easy reach to avoid excessive bending or stretching.', 'Ensure the floor is even and free of slippery surfaces.', 'Consider removing the shelf above the desk if it is not properly installed.', 'Use a nightlight to improve visibility during nighttime.', 'Move the bed away from the door to allow for better accessibility', 'Organize the items on top of the shelf to prevent falling objects.', 'Move the storage boxes on the left side of the bed to a different place to avoid tripping hazard']
-Walking path score:  0.6
-hazard_list:  high_priority=['Clutter and bags near the desk create tripping hazards', 'Uneven flooring or slippery surfaces', 'Low bed height'] medium_priority=['Chair with wheels', 'Poor lighting near bed', 'Loose wires or cords', 'Items on top of the shelf may fall'] low_priority=['Bed too close to the door', 'Shelf is not properly installed', 'Storage boxes near the bed', 'Difficulty reaching items on shelves']
-Inside _get_risk_score
-Risk score:  71
-Safety Score:  71.6
-Inside _get_bounding_box
-hazards texts:  [['Clutter and bags near the desk create tripping hazards', 'Uneven flooring or slippery surfaces', 'Low bed height', 'Chair with wheels', 'Poor lighting near bed', 'Loose wires or cords', 'Items on top of the shelf may fall', 'Bed too close to the door', 'Shelf is not properly installed', 'Storage boxes near the bed', 'Difficulty reaching items on shelves']]
-Sending the inputs through processor
-Forward pass
-Get preprocessed image
-Sending post_process_grounded_object_detection with threshold  0.15
-label in low priority:  tensor(6)
-label in low priority:  tensor(6)
-label in low priority:  tensor(8)
-label in low priority:  tensor(6)
-label in low priority:  tensor(8)
-label in low priority:  tensor(6)
-label in low priority:  tensor(8)
-label in low priority:  tensor(8)
-label in low priority:  tensor(0)
-label in low priority:  tensor(9)
-label in low priority:  tensor(9)
-label in low priority:  tensor(6)
-label in low priority:  tensor(9)
-label in low priority:  tensor(9)
-label in low priority:  tensor(5)
-label in low priority:  tensor(5)
-label in low priority:  tensor(5)
-label in low priority:  tensor(5)
-label in low priority:  tensor(9)
-label in low priority:  tensor(5)
-label in low priority:  tensor(5)
-label in low priority:  tensor(9)
-label in low priority:  tensor(9)
-label in low priority:  tensor(8)
-label in low priority:  tensor(5)
-label in low priority:  tensor(9)
-label in low priority:  tensor(9)
-label in low priority:  tensor(3)
-label in low priority:  tensor(2)
-label in low priority:  tensor(0)
-label in low priority:  tensor(0)
-label in low priority:  tensor(1)
-label in low priority:  tensor(2)
-label in low priority:  tensor(3)
-label in low priority:  tensor(2)
-label in low priority:  tensor(1)
-label in low priority:  tensor(1)
-label in low priority:  tensor(3)
-label in low priority:  tensor(2)
-label in low priority:  tensor(9)
-label in low priority:  tensor(9)
-label in low priority:  tensor(1)
-label in low priority:  tensor(1)
-label in low priority:  tensor(3)
-label in low priority:  tensor(1)
-label in low priority:  tensor(1)
-label in low priority:  tensor(1)
-iter_list:  []
-Bounding box:  []
-Sending request with /home/prathik-somanath/git/responsible/backend-server/temp_image.png to riskitfree as b1a5ff97-07a3-4c89-a6ea-c6b057b25952.png
-Uploaading image to  s3
-File uploaded to s3 b1a5ff97-07a3-4c89-a6ea-c6b057b25952.png
-File /home/prathik-somanath/git/responsible/backend-server/temp_image.png uploaded to b1a5ff97-07a3-4c89-a6ea-c6b057b25952.png.
-Inside create_space_log
-Result:  InsertOneResult(ObjectId('6802f7fd075335096bb8defe'), acknowledged=True)
-INFO:     2603:8000:ba00:2aae:dde4:c975:a41f:61d0:0 - "POST /space/logs/upload-image HTTP/1.1" 200 OK
-Decoding token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODAwMzI5MTBmODVmMzUyMGI5ZWE5NzciLCJleHAiOjE3NDUxNzYwMDN9.bZwACIluQ9CNqVDSz9Vzvl5ppHor9KfKVrrzhr2xShU
-Payload: {'sub': '680032910f85f3520b9ea977', 'exp': 1745176003}
-Inside get_space_by_id
-INFO:     2603:8000:ba00:2aae:dde4:c975:a41f:61d0:0 - "GET /space/6802f5b9b00925a45ffb34f3 HTTP/1.1" 200 OK
-Decoding token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODAwMzI5MTBmODVmMzUyMGI5ZWE5NzciLCJleHAiOjE3NDUxNzYwMDN9.bZwACIluQ9CNqVDSz9Vzvl5ppHor9KfKVrrzhr2xShU
-Payload: {'sub': '680032910f85f3520b9ea977', 'exp': 1745176003}
-Inside get_space_by_id
-INFO:     2603:8000:ba00:2aae:dde4:c975:a41f:61d0:0 - "GET /space/logs/space/6802f5b9b00925a45ffb34f3 HTTP/1.1" 200 OK
-INFO:     2603:8000:ba00:2aae:dde4:c975:a41f:61d0:0 - "GET /patient HTTP/1.1" 307 Temporary Redirect
-Decoding token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODAwMzI5MTBmODVmMzUyMGI5ZWE5NzciLCJleHAiOjE3NDUxNzYwMDN9.bZwACIluQ9CNqVDSz9Vzvl5ppHor9KfKVrrzhr2xShU
-Payload: {'sub': '680032910f85f3520b9ea977', 'exp': 1745176003}
-INFO:     2603:8000:ba00:2aae:dde4:c975:a41f:61d0:0 - "GET /patient/ HTTP/1.1" 200 OK
-WARNING:  StatReload detected changes in 'spaces/views/space_views.py'. Reloading...
-INFO:     Shutting down
-INFO:     Waiting for application shutdown.
-INFO:     Application shutdown complete.
-INFO:     Finished server process [919007]
-Database connection closed
+WARNING:  StatReload detected changes in 'chat_agent/database.py'. Reloading...
 /home/prathik-somanath/git/responsible/backend-server/venv/lib/python3.12/site-packages/pydantic/_internal/_config.py:373: UserWarning: Valid config keys have changed in V2:
 * 'allow_population_by_field_name' has been renamed to 'validate_by_name'
   warnings.warn(message, UserWarning)
-INFO:     Started server process [919577]
-INFO:     Waiting for application startup.
-INFO:     Application startup complete.
+Process SpawnProcess-6:
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.12/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/prathik-somanath/git/responsible/backend-server/venv/lib/python3.12/site-packages/uvicorn/_subprocess.py", line 76, in subprocess_started
+    target(sockets=sockets)
+  File "/home/prathik-somanath/git/responsible/backend-server/venv/lib/python3.12/site-packages/uvicorn/server.py", line 61, in run
+    return asyncio.run(self.serve(sockets=sockets))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/asyncio/runners.py", line 194, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/asyncio/base_events.py", line 687, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/home/prathik-somanath/git/responsible/backend-server/venv/lib/python3.12/site-packages/uvicorn/server.py", line 68, in serve
+    config.load()
+  File "/home/prathik-somanath/git/responsible/backend-server/venv/lib/python3.12/site-packages/uvicorn/config.py", line 473, in load
+    self.loaded_app = import_from_string(self.app)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/prathik-somanath/git/responsible/backend-server/venv/lib/python3.12/site-packages/uvicorn/importer.py", line 21, in import_from_string
+    module = importlib.import_module(module_str)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/importlib/__init__.py", line 90, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/home/prathik-somanath/git/responsible/backend-server/main.py", line 9, in <module>
+    from chat_agent.router import router as chat_agent_router
+  File "/home/prathik-somanath/git/responsible/backend-server/chat_agent/router.py", line 5, in <module>
+    from .agent import run_conversation_turn
+  File "/home/prathik-somanath/git/responsible/backend-server/chat_agent/agent.py", line 20
+    ("system", "You are a helpful assistant for the Responsible application. 
+               ^
+SyntaxError: unterminated string literal (detected at line 20)
 Unique indexes created on username and email.
-Connected to the database
-Decoding token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODAwMzI5MTBmODVmMzUyMGI5ZWE5NzciLCJleHAiOjE3NDUxNzYwMDN9.bZwACIluQ9CNqVDSz9Vzvl5ppHor9KfKVrrzhr2xShU
-Payload: {'sub': '680032910f85f3520b9ea977', 'exp': 1745176003}
-Inside get_space_by_id
-INFO:     2603:8000:ba00:2aae:dde4:c975:a41f:61d0:0 - "GET /space/logs/6802f7fd075335096bb8defe HTTP/1.1" 200 OK
-Decoding token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODAwMzI5MTBmODVmMzUyMGI5ZWE5NzciLCJleHAiOjE3NDUxNzYwMDN9.bZwACIluQ9CNqVDSz9Vzvl5ppHor9KfKVrrzhr2xShU
-Payload: {'sub': '680032910f85f3520b9ea977', 'exp': 1745176003}
-Inside upload_image with space_id  6802f5b9b00925a45ffb34f3
-Inside get_space_by_id
-Contents type:  <class 'bytes'>
-Image type:  <class 'PIL.JpegImagePlugin.JpegImageFile'>
-Sending request with /home/prathik-somanath/git/responsible/backend-server/temp_image.png to riskitfree as 4edbd84d-2a1f-4b9e-8abc-34346f819838.png
-Uploaading image to  s3
-File uploaded to s3 4edbd84d-2a1f-4b9e-8abc-34346f819838.png
-File /home/prathik-somanath/git/responsible/backend-server/temp_image.png uploaded to 4edbd84d-2a1f-4b9e-8abc-34346f819838.png.
-Getting patient info for  ['680195f77604a4525291c0e9', '6801a0dbdfc8881e853afff4']
-Getting hazards and recommendations
-Inside _get_hazards_and_recommendations
-Encoded image:  <class 'str'>
-Prompt of condition:  User has a condition: Knee pain. User has a condition: Old age. 
-Hazards:  [Hazard(priority='High', description='Clutter and bags on the floor near the bed and desk creating tripping hazards.', score=0.9), Hazard(priority='High', description='Inadequate lighting, especially near the bed and door, increasing the risk of falls.', score=0.85), Hazard(priority='High', description='Clothes hanging on the door posing a tripping hazard or obstruction.', score=0.8), Hazard(priority='Medium', description='Desk and chair positioned in a way that obstructs the walking path.', score=0.7), Hazard(priority='Medium', description='Shelves not securely mounted to the wall or unstable items on the shelves.', score=0.65), Hazard(priority='Medium', description='Clutter under the TV creating tripping hazards.', score=0.6), Hazard(priority='Medium', description='Unstable chair without armrests making it difficult to sit and stand.', score=0.55), Hazard(priority='Low', description='Items on the shelves being disorganized, increasing the risk of falling objects.', score=0.45), Hazard(priority='Low', description='Uneven floor surfaces or loose flooring.', score=0.4), Hazard(priority='Low', description='TV not securely positioned, increasing the risk of falls.', score=0.35), Hazard(priority='High', description='Bed height making it difficult to get in and out of bed.', score=0.95), Hazard(priority='Medium', description='Lack of clear space around the bed for easy movement.', score=0.75), Hazard(priority='High', description='The presence of throw rugs which can be a tripping hazard if not secured.', score=0.88), Hazard(priority='Medium', description='Overcrowded shelves potentially leading to falling objects.', score=0.62), Hazard(priority='Medium', description='Inadequate space for navigating around furniture.', score=0.68)]
-Recommendations:  ['Remove clutter and bags on the floor to reduce tripping hazards, especially near the bed and desk.', 'Ensure adequate lighting, especially near the bed and door, to improve visibility and prevent falls.', 'Make sure the bed is at an appropriate height to facilitate getting in and out of bed.', 'Secure or remove the clothes hanging on the door, as they could pose a tripping hazard or obstruction.', 'Move the desk and chair away from the main walking path to allow more space.', 'Ensure that the shelves are securely mounted to the wall and that items on the shelves are stable and cannot easily fall.', 'Remove the clutter under the TV to avoid tripping hazards.', 'Consider replacing the chair with one that is more stable and has armrests to assist with sitting and standing.', 'Organize items on the shelves to prevent them from falling and creating hazards.', 'Consider adding grab bars in the bathroom to assist with mobility, if applicable.', "Ensure there's clear space around the bed for easy movement.", 'Minimize the use of throw rugs, as they can be a tripping hazard. If used, ensure they are securely fastened to the floor.', 'Check that the floor is even and free of uneven surfaces or loose flooring.', 'Consider moving furniture to create a wider and more accessible walking path.', 'Evaluate if the TV is securely positioned to prevent falls due to accidental bumping.', 'Reduce the number of items on the shelves to prevent falling objects and potential injuries']
-Walking path score:  0.5
-hazard_list:  high_priority=['Clutter and bags on the floor near the bed and desk creating tripping hazards.', 'Inadequate lighting, especially near the bed and door, increasing the risk of falls.', 'Clothes hanging on the door posing a tripping hazard or obstruction.', 'Bed height making it difficult to get in and out of bed.', 'The presence of throw rugs which can be a tripping hazard if not secured.'] medium_priority=['Desk and chair positioned in a way that obstructs the walking path.', 'Shelves not securely mounted to the wall or unstable items on the shelves.', 'Clutter under the TV creating tripping hazards.', 'Unstable chair without armrests making it difficult to sit and stand.', 'Lack of clear space around the bed for easy movement.', 'Overcrowded shelves potentially leading to falling objects.', 'Inadequate space for navigating around furniture.'] low_priority=['Items on the shelves being disorganized, increasing the risk of falling objects.', 'Uneven floor surfaces or loose flooring.', 'TV not securely positioned, increasing the risk of falls.']
-Inside _get_risk_score
-Risk score:  73
-Safety Score:  63.5
-Inside _get_bounding_box
-hazards texts:  [['Clutter and bags on the floor near the bed and desk creating tripping hazards.', 'Inadequate lighting, especially near the bed and door, increasing the risk of falls.', 'Clothes hanging on the door posing a tripping hazard or obstruction.', 'Bed height making it difficult to get in and out of bed.', 'The presence of throw rugs which can be a tripping hazard if not secured.', 'Desk and chair positioned in a way that obstructs the walking path.', 'Shelves not securely mounted to the wall or unstable items on the shelves.', 'Clutter under the TV creating tripping hazards.', 'Unstable chair without armrests making it difficult to sit and stand.', 'Lack of clear space around the bed for easy movement.', 'Overcrowded shelves potentially leading to falling objects.', 'Inadequate space for navigating around furniture.', 'Items on the shelves being disorganized, increasing the risk of falling objects.', 'Uneven floor surfaces or loose flooring.', 'TV not securely positioned, increasing the risk of falls.']]
-Sending the inputs through processor
-Error in _get_bounding_box Unable to create tensor, you should probably activate truncation and/or padding with 'padding=True' 'truncation=True' to have batched tensors with the same length. Perhaps your features (`input_ids` in this case) have excessive nesting (inputs type `list` where type `int` is expected).
-Error in upload_image 500: Get Bounding Box failed: Unable to create tensor, you should probably activate truncation and/or padding with 'padding=True' 'truncation=True' to have batched tensors with the same length. Perhaps your features (`input_ids` in this case) have excessive nesting (inputs type `list` where type `int` is expected).
-INFO:     2603:8000:ba00:2aae:dde4:c975:a41f:61d0:0 - "POST /space/logs/upload-image HTTP/1.1" 500 Internal Server Error
-Decoding token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODAwMzI5MTBmODVmMzUyMGI5ZWE5NzciLCJleHAiOjE3NDUxNzYwMDN9.bZwACIluQ9CNqVDSz9Vzvl5ppHor9KfKVrrzhr2xShU
-Payload: {'sub': '680032910f85f3520b9ea977', 'exp': 1745176003}
-Inside upload_image with space_id  6802f5b9b00925a45ffb34f3
-Inside get_space_by_id
-Contents type:  <class 'bytes'>
-Image type:  <class 'PIL.JpegImagePlugin.JpegImageFile'>
-Sending request with /home/prathik-somanath/git/responsible/backend-server/temp_image.png to riskitfree as 36f385a4-306b-4f65-940f-cb10c90aca69.png
-Uploaading image to  s3
-File uploaded to s3 36f385a4-306b-4f65-940f-cb10c90aca69.png
-File /home/prathik-somanath/git/responsible/backend-server/temp_image.png uploaded to 36f385a4-306b-4f65-940f-cb10c90aca69.png.
-Getting patient info for  ['680195f77604a4525291c0e9', '6801a0dbdfc8881e853afff4']
-Getting hazards and recommendations
-Inside _get_hazards_and_recommendations
-Encoded image:  <class 'str'>
-Prompt of condition:  User has a condition: Knee pain. User has a condition: Old age. 
-Hazards:  [Hazard(priority='High Priority', description='Obstacles near the bed', score=0.9), Hazard(priority='High Priority', description='Clothes hanging on the door', score=0.8), Hazard(priority='High Priority', description='Cluttered floor near desk', score=0.7), Hazard(priority='Medium Priority', description='Low bed height', score=0.6), Hazard(priority='Medium Priority', description='Items on high shelves', score=0.5), Hazard(priority='Low Priority', description='Poor lighting', score=0.3), Hazard(priority='Low Priority', description='Hardwood floors', score=0.2)]
-Recommendations:  ['Clear obstacles around the bed to prevent tripping, especially during night.', 'Remove clothing from the door to ensure it opens fully and provides a clear exit path.', 'Declutter the floor area, especially near the desk, to avoid tripping hazards.', 'Consider raising the bed height to ease getting in and out of bed and reduce strain on knees.', 'Ensure adequate lighting throughout the room to improve visibility and reduce the risk of falls.', 'Install grab bars in the bathroom to assist with balance and stability.', 'Store frequently used items within easy reach to avoid excessive bending or stretching.']
-Walking path score:  0.6
-hazard_list:  high_priority=['Obstacles near the bed', 'Clothes hanging on the door', 'Cluttered floor near desk'] medium_priority=['Low bed height', 'Items on high shelves'] low_priority=['Poor lighting', 'Hardwood floors']
-Inside _get_risk_score
-Risk score:  66
-Safety Score:  73.6
-Inside _get_bounding_box
-hazards texts:  [['Obstacles near the bed', 'Clothes hanging on the door', 'Cluttered floor near desk', 'Low bed height', 'Items on high shelves', 'Poor lighting', 'Hardwood floors']]
-Sending the inputs through processor
-Forward pass
-Get preprocessed image
-Sending post_process_grounded_object_detection with threshold  0.15
-label in medium priority:  tensor(4)
-label in medium priority:  tensor(4)
-label in high priority:  tensor(1)
-label in high priority:  tensor(1)
-label in high priority:  tensor(1)
-label in high priority:  tensor(1)
-label in high priority:  tensor(2)
-label in high priority:  tensor(0)
-label in medium priority:  tensor(3)
-label in low priority:  tensor(6)
-label in low priority:  tensor(6)
-label in medium priority:  tensor(3)
-label in medium priority:  tensor(3)
-label in low priority:  tensor(6)
-label in high priority:  tensor(0)
-label in low priority:  tensor(6)
-label in high priority:  tensor(0)
-iter_list:  [(tensor([131.0730, 216.8436, 205.6486, 370.0851]), tensor(0.4105), tensor(1)), (tensor([128.0524, 220.8694, 214.1096, 466.4293]), tensor(0.3168), tensor(1)), (tensor([199.8593, 213.9876, 258.2216, 441.5945]), tensor(0.3216), tensor(1)), (tensor([129.5843, 215.6818, 261.7356, 474.7370]), tensor(0.3911), tensor(1)), (tensor([335.4131, 466.0544, 612.1448, 610.3764]), tensor(0.2155), tensor(2)), (tensor([-8.8589e-01,  5.3845e+02,  3.7926e+02,  9.6924e+02]), tensor(0.4527), tensor(0)), (tensor([ -1.9198, 826.6995, 151.7625, 959.0385]), tensor(0.1881), tensor(0)), (tensor([  5.8743, 826.9377, 166.0234, 960.6863]), tensor(0.1927), tensor(0)), (tensor([388.4352, 108.5224, 598.2120, 236.4598]), tensor(0.3068), tensor(4)), (tensor([404.5732,  39.7590, 611.5645, 233.1707]), tensor(0.2706), tensor(4)), (tensor([ -2.5011, 539.0574, 380.1190, 935.4249]), tensor(0.1889), tensor(3)), (tensor([160.0634, 756.9923, 270.5903, 958.7871]), tensor(0.1503), tensor(3)), (tensor([-3.6202e-01,  7.5620e+02,  2.6878e+02,  9.6350e+02]), tensor(0.2217), tensor(3))]
-Detected Clothes hanging on the door with confidence 0.411 at location [131.07, 216.84, 205.65, 370.09]
-Detected Clothes hanging on the door with confidence 0.317 at location [128.05, 220.87, 214.11, 466.43]
-Detected Clothes hanging on the door with confidence 0.322 at location [199.86, 213.99, 258.22, 441.59]
-Detected Clothes hanging on the door with confidence 0.391 at location [129.58, 215.68, 261.74, 474.74]
-Detected Cluttered floor near desk with confidence 0.215 at location [335.41, 466.05, 612.14, 610.38]
-Detected Obstacles near the bed with confidence 0.453 at location [-0.89, 538.45, 379.26, 969.24]
-Detected Obstacles near the bed with confidence 0.188 at location [-1.92, 826.7, 151.76, 959.04]
-Detected Obstacles near the bed with confidence 0.193 at location [5.87, 826.94, 166.02, 960.69]
-Detected Items on high shelves with confidence 0.307 at location [388.44, 108.52, 598.21, 236.46]
-Detected Items on high shelves with confidence 0.271 at location [404.57, 39.76, 611.56, 233.17]
-Detected Low bed height with confidence 0.189 at location [-2.5, 539.06, 380.12, 935.42]
-Detected Low bed height with confidence 0.15 at location [160.06, 756.99, 270.59, 958.79]
-Detected Low bed height with confidence 0.222 at location [-0.36, 756.2, 268.78, 963.5]
-Bounding box:  [BoundingBox(box=[131.07, 216.84, 205.65, 370.09], score=0.41052165627479553, label='Clothes hanging on the door'), BoundingBox(box=[128.05, 220.87, 214.11, 466.43], score=0.3168050944805145, label='Clothes hanging on the door'), BoundingBox(box=[199.86, 213.99, 258.22, 441.59], score=0.3216163218021393, label='Clothes hanging on the door'), BoundingBox(box=[129.58, 215.68, 261.74, 474.74], score=0.3910667598247528, label='Clothes hanging on the door'), BoundingBox(box=[335.41, 466.05, 612.14, 610.38], score=0.21549884974956512, label='Cluttered floor near desk'), BoundingBox(box=[-0.89, 538.45, 379.26, 969.24], score=0.4526539742946625, label='Obstacles near the bed'), BoundingBox(box=[-1.92, 826.7, 151.76, 959.04], score=0.18807020783424377, label='Obstacles near the bed'), BoundingBox(box=[5.87, 826.94, 166.02, 960.69], score=0.19274161756038666, label='Obstacles near the bed'), BoundingBox(box=[388.44, 108.52, 598.21, 236.46], score=0.3068489730358124, label='Items on high shelves'), BoundingBox(box=[404.57, 39.76, 611.56, 233.17], score=0.2705540359020233, label='Items on high shelves'), BoundingBox(box=[-2.5, 539.06, 380.12, 935.42], score=0.1889227032661438, label='Low bed height'), BoundingBox(box=[160.06, 756.99, 270.59, 958.79], score=0.15033359825611115, label='Low bed height'), BoundingBox(box=[-0.36, 756.2, 268.78, 963.5], score=0.2217237651348114, label='Low bed height')]
-Sending request with /home/prathik-somanath/git/responsible/backend-server/temp_image.png to riskitfree as 2d27104b-ef82-4ae6-aa16-11213e873192.png
-Uploaading image to  s3
-File uploaded to s3 2d27104b-ef82-4ae6-aa16-11213e873192.png
-File /home/prathik-somanath/git/responsible/backend-server/temp_image.png uploaded to 2d27104b-ef82-4ae6-aa16-11213e873192.png.
-Inside create_space_log
-Result:  InsertOneResult(ObjectId('6802f8d30437f57ae7546e78'), acknowledged=True)
-INFO:     2603:8000:ba00:2aae:dde4:c975:a41f:61d0:0 - "POST /space/logs/upload-image HTTP/1.1" 200 OK
-Decoding token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODAwMzI5MTBmODVmMzUyMGI5ZWE5NzciLCJleHAiOjE3NDUxNzYwMDN9.bZwACIluQ9CNqVDSz9Vzvl5ppHor9KfKVrrzhr2xShU
-Payload: {'sub': '680032910f85f3520b9ea977', 'exp': 1745176003}
-Inside get_space_by_id
-INFO:     2603:8000:ba00:2aae:dde4:c975:a41f:61d0:0 - "GET /space/6802f5b9b00925a45ffb34f3 HTTP/1.1" 200 OK
-Decoding token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODAwMzI5MTBmODVmMzUyMGI5ZWE5NzciLCJleHAiOjE3NDUxNzYwMDN9.bZwACIluQ9CNqVDSz9Vzvl5ppHor9KfKVrrzhr2xShU
-Payload: {'sub': '680032910f85f3520b9ea977', 'exp': 1745176003}
-Inside get_space_by_id
-INFO:     2603:8000:ba00:2aae:dde4:c975:a41f:61d0:0 - "GET /space/logs/space/6802f5b9b00925a45ffb34f3 HTTP/1.1" 200 OK
-INFO:     2603:8000:ba00:2aae:dde4:c975:a41f:61d0:0 - "GET /patient HTTP/1.1" 307 Temporary Redirect
-Decoding token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODAwMzI5MTBmODVmMzUyMGI5ZWE5NzciLCJleHAiOjE3NDUxNzYwMDN9.bZwACIluQ9CNqVDSz9Vzvl5ppHor9KfKVrrzhr2xShU
-Payload: {'sub': '680032910f85f3520b9ea977', 'exp': 1745176003}
-INFO:     2603:8000:ba00:2aae:dde4:c975:a41f:61d0:0 - "GET /patient/ HTTP/1.1" 200 OK
-Decoding token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODAwMzI5MTBmODVmMzUyMGI5ZWE5NzciLCJleHAiOjE3NDUxNzYwMDN9.bZwACIluQ9CNqVDSz9Vzvl5ppHor9KfKVrrzhr2xShU
-Payload: {'sub': '680032910f85f3520b9ea977', 'exp': 1745176003}
-Inside get_space_by_id
-INFO:     2603:8000:ba00:2aae:dde4:c975:a41f:61d0:0 - "GET /space/logs/6802f8d30437f57ae7546e78 HTTP/1.1" 200 OK
-INFO:     2603:8000:ba00:2aae:dde4:c975:a41f:61d0:0 - "GET /patient HTTP/1.1" 307 Temporary Redirect
-Decoding token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODAwMzI5MTBmODVmMzUyMGI5ZWE5NzciLCJleHAiOjE3NDUxNzYwMDN9.bZwACIluQ9CNqVDSz9Vzvl5ppHor9KfKVrrzhr2xShU
-Payload: {'sub': '680032910f85f3520b9ea977', 'exp': 1745176003}
-Spaces: [SpaceResponse(id='6800bd08b9f934916a772c00', space_name='Living Room 1', user_id='680032910f85f3520b9ea977', description='Main living area with furniture and electronics', patient_ids=['680195f77604a4525291c0e9', '6801a0dbdfc8881e853afff4'], created_at=datetime.datetime(2025, 4, 17, 1, 34, 16, 284000), updated_at=datetime.datetime(2025, 4, 17, 17, 46, 30, 324000)), SpaceResponse(id='6802f5b9b00925a45ffb34f3', space_name='Bedroom', user_id='680032910f85f3520b9ea977', description='Master bedroom', patient_ids=['680195f77604a4525291c0e9', '6801a0dbdfc8881e853afff4'], created_at=datetime.datetime(2025, 4, 18, 18, 0, 41, 511000), updated_at=datetime.datetime(2025, 4, 18, 18, 0, 41, 511000))]
-INFO:     2603:8000:ba00:2aae:dde4:c975:a41f:61d0:0 - "GET /space/user HTTP/1.1" 200 OK
-Decoding token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODAwMzI5MTBmODVmMzUyMGI5ZWE5NzciLCJleHAiOjE3NDUxNzYwMDN9.bZwACIluQ9CNqVDSz9Vzvl5ppHor9KfKVrrzhr2xShU
-Payload: {'sub': '680032910f85f3520b9ea977', 'exp': 1745176003}
-INFO:     2603:8000:ba00:2aae:dde4:c975:a41f:61d0:0 - "GET /patient/ HTTP/1.1" 200 OK
-Decoding token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODAwMzI5MTBmODVmMzUyMGI5ZWE5NzciLCJleHAiOjE3NDUxNzYwMDN9.bZwACIluQ9CNqVDSz9Vzvl5ppHor9KfKVrrzhr2xShU
-Payload: {'sub': '680032910f85f3520b9ea977', 'exp': 1745176003}
-Inside get_space_by_id
-INFO:     2603:8000:ba00:2aae:dde4:c975:a41f:61d0:0 - "GET /space/6802f5b9b00925a45ffb34f3 HTTP/1.1" 200 OK
-Decoding token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODAwMzI5MTBmODVmMzUyMGI5ZWE5NzciLCJleHAiOjE3NDUxNzYwMDN9.bZwACIluQ9CNqVDSz9Vzvl5ppHor9KfKVrrzhr2xShU
-Payload: {'sub': '680032910f85f3520b9ea977', 'exp': 1745176003}
-Inside get_space_by_id
-INFO:     2603:8000:ba00:2aae:dde4:c975:a41f:61d0:0 - "GET /space/logs/space/6802f5b9b00925a45ffb34f3 HTTP/1.1" 200 OK
-INFO:     2603:8000:ba00:2aae:dde4:c975:a41f:61d0:0 - "GET /patient HTTP/1.1" 307 Temporary Redirect
-Decoding token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODAwMzI5MTBmODVmMzUyMGI5ZWE5NzciLCJleHAiOjE3NDUxNzYwMDN9.bZwACIluQ9CNqVDSz9Vzvl5ppHor9KfKVrrzhr2xShU
-Payload: {'sub': '680032910f85f3520b9ea977', 'exp': 1745176003}
-INFO:     2603:8000:ba00:2aae:dde4:c975:a41f:61d0:0 - "GET /patient/ HTTP/1.1" 200 OK
-Decoding token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODAwMzI5MTBmODVmMzUyMGI5ZWE5NzciLCJleHAiOjE3NDUxNzYwMDN9.bZwACIluQ9CNqVDSz9Vzvl5ppHor9KfKVrrzhr2xShU
-Payload: {'sub': '680032910f85f3520b9ea977', 'exp': 1745176003}
-Inside upload_image with space_id  6802f5b9b00925a45ffb34f3
-Inside get_space_by_id
-Contents type:  <class 'bytes'>
-Image type:  <class 'PIL.JpegImagePlugin.JpegImageFile'>
-Sending request with /home/prathik-somanath/git/responsible/backend-server/temp_image.png to riskitfree as 28641a09-9dca-4845-88ad-cd6a646d3e3c.png
-Uploaading image to  s3
-File uploaded to s3 28641a09-9dca-4845-88ad-cd6a646d3e3c.png
-File /home/prathik-somanath/git/responsible/backend-server/temp_image.png uploaded to 28641a09-9dca-4845-88ad-cd6a646d3e3c.png.
-Getting patient info for  ['680195f77604a4525291c0e9', '6801a0dbdfc8881e853afff4']
-Getting hazards and recommendations
-Inside _get_hazards_and_recommendations
-Encoded image:  <class 'str'>
-Prompt of condition:  User has a condition: Knee pain. User has a condition: Old age. 
-Hazards:  [Hazard(priority='High', description='Rug on the floor', score=0.9), Hazard(priority='High', description='Clutter on the floor near the bed', score=0.85), Hazard(priority='High', description='Obstacles blocking walking path', score=0.8), Hazard(priority='Medium', description='Unstable rolling chairs', score=0.7), Hazard(priority='Medium', description='Uneven flooring', score=0.6), Hazard(priority='Medium', description='Low lighting', score=0.5), Hazard(priority='Medium', description='Items hanging off edge of bed', score=0.4), Hazard(priority='Low', description='Clutter under desk', score=0.3), Hazard(priority='Low', description='Extension cords', score=0.2), Hazard(priority='Low', description='No grab bars', score=0.1), Hazard(priority='Low', description='Overly soft seating', score=0.2), Hazard(priority='Low', description='Sharp corners on furniture', score=0.3), Hazard(priority='Low', description='Poor ventilation', score=0.2), Hazard(priority='Low', description='No phone nearby', score=0.1), Hazard(priority='Low', description='Medical supplies not readily accessible', score=0.1)]
-Recommendations:  ['Remove the rug to prevent tripping.', 'Clear clutter and obstacles from the floor to create a clear walking path.', 'Ensure adequate lighting throughout the room, especially in walkways.', 'Organize items under the bed to prevent tripping.', 'Make sure the rolling chairs are stable.', 'Move the desk chair away from the walking path when not in use.', 'Remove items hanging off the edge of the bed.', 'Clear items underneath the desk.', 'Ensure the floor is even and free of cracks or damage that could cause tripping.', 'Install grab bars in key areas like next to the bed.', 'Consider a bedside commode if nighttime bathroom trips are frequent.', 'Use contrasting colors to highlight edges and transitions, improving visibility.', 'Regularly assess and adjust the room layout as needed to accommodate changing needs.', 'Make sure there is enough space to move around without bumping into furniture.', 'Keep frequently used items within easy reach to avoid unnecessary bending or stretching, install shelves if necessary.', 'Eliminate extension cords and secure any necessary cords against baseboards to avoid tripping hazards', 'Consider an adjustable bed to help make it easier to get in and out of bed.', 'Place non-slip mats near the bed to provide additional stability when getting in and out of bed.', 'Avoid overly soft seating, as it can be difficult for individuals with knee pain to get up from.', 'Avoid furniture with sharp corners or edges, or add corner protectors.', 'Make sure that there is proper ventilation in the room to prevent overheating.', 'Have a phone easily accessible in case of an emergency.', 'Keep emergency contact information readily available.', 'Ensure smoke detectors and carbon monoxide detectors are installed and working properly.', 'Develop an emergency plan and practice it regularly.', 'Check the room regularly for potential hazards and address them promptly.', 'Consider professional assessment for customized safety recommendations.', 'Create a clear path to exits in case of an emergency.', 'Check the room regularly for potential hazards and address them promptly.', 'Ensure that medications and medical equipment are readily accessible and properly stored.', 'Keep essential medical supplies within easy reach.', 'Maintain a comfortable room temperature to prevent overheating or chills.', 'Have assistive devices, such as a walker or cane, readily available if needed.', 'Make sure the bed is at the right height for comfortable transfers.', 'Use nightlights to help with visibility during nighttime bathroom trips.', 'Ensure adequate lighting throughout the room, especially in walkways.', 'Remove any loose electrical cords or wires to prevent tripping hazards.', 'Ensure there is enough space to move around without bumping into furniture.', 'Avoid clutter and obstacles on the floor to prevent tripping hazards.', 'Address any potential fire hazards, such as flammable materials near heat sources.', 'Check the room regularly for potential hazards and address them promptly.', 'Consider a home modification specialist to make it safer for senior to live in room.', 'Make sure there is enough space to move around without bumping into furniture.', 'Check the room regularly for potential hazards and address them promptly.', 'Consult with an occupational therapist for personalized recommendations.', 'Have a phone easily accessible in case of an emergency.', 'Ensure that medications and medical equipment are readily accessible and properly stored.', 'Keep essential medical supplies within easy reach.', 'Keep emergency contact information readily available.', 'Address any potential fire hazards, such as flammable materials near heat sources.', 'Maintain a comfortable room temperature to prevent overheating or chills.', 'Avoid clutter and obstacles on the floor to prevent tripping hazards.', 'Eliminate extension cords and secure any necessary cords against baseboards to avoid tripping hazards', 'Consider professional assessment for customized safety recommendations.', 'Consult with an occupational therapist for personalized recommendations.', 'Check the room regularly for potential hazards and address them promptly.', 'Have a phone easily accessible in case of an emergency.', 'Consider professional assessment for customized safety recommendations.', 'Make sure there is enough space to move around without bumping into furniture.', 'Avoid clutter and obstacles on the floor to prevent tripping hazards.', 'Eliminate extension cords and secure any necessary cords against baseboards to avoid tripping hazards']
-Walking path score:  0.5
-hazard_list:  high_priority=['Rug on the floor', 'Clutter on the floor near the bed', 'Obstacles blocking walking path'] medium_priority=['Unstable rolling chairs', 'Uneven flooring', 'Low lighting', 'Items hanging off edge of bed'] low_priority=['Clutter under desk', 'Extension cords', 'No grab bars', 'Overly soft seating', 'Sharp corners on furniture', 'Poor ventilation', 'No phone nearby', 'Medical supplies not readily accessible']
-Inside _get_risk_score
-Risk score:  54
-Safety Score:  73.0
-Inside _get_bounding_box
-hazards texts:  [['Rug on the floor', 'Clutter on the floor near the bed', 'Obstacles blocking walking path', 'Unstable rolling chairs', 'Uneven flooring', 'Low lighting', 'Items hanging off edge of bed', 'Clutter under desk', 'Extension cords', 'No grab bars', 'Overly soft seating', 'Sharp corners on furniture', 'Poor ventilation', 'No phone nearby', 'Medical supplies not readily accessible']]
-Sending the inputs through processor
-Forward pass
-Get preprocessed image
-Sending post_process_grounded_object_detection with threshold  0.15
-label in low priority:  tensor(12)
-label in medium priority:  tensor(5)
-label in low priority:  tensor(11)
-label in medium priority:  tensor(5)
-label in medium priority:  tensor(5)
-label in low priority:  tensor(12)
-label in low priority:  tensor(12)
-label in low priority:  tensor(12)
-label in low priority:  tensor(11)
-label in low priority:  tensor(11)
-label in low priority:  tensor(8)
-label in low priority:  tensor(8)
-label in low priority:  tensor(7)
-label in medium priority:  tensor(6)
-label in low priority:  tensor(8)
-label in low priority:  tensor(7)
-label in low priority:  tensor(8)
-label in low priority:  tensor(7)
-label in medium priority:  tensor(3)
-label in low priority:  tensor(8)
-label in low priority:  tensor(7)
-label in low priority:  tensor(8)
-label in low priority:  tensor(10)
-label in low priority:  tensor(8)
-label in medium priority:  tensor(3)
-label in medium priority:  tensor(6)
-label in medium priority:  tensor(6)
-label in medium priority:  tensor(6)
-label in low priority:  tensor(8)
-label in low priority:  tensor(10)
-label in medium priority:  tensor(6)
-label in medium priority:  tensor(6)
-label in medium priority:  tensor(6)
-label in high priority:  tensor(1)
-label in high priority:  tensor(1)
-label in low priority:  tensor(8)
-label in low priority:  tensor(10)
-label in medium priority:  tensor(6)
-label in high priority:  tensor(1)
-label in low priority:  tensor(10)
-label in low priority:  tensor(7)
-label in low priority:  tensor(14)
-label in high priority:  tensor(1)
-label in medium priority:  tensor(3)
-label in medium priority:  tensor(4)
-label in medium priority:  tensor(4)
-label in high priority:  tensor(0)
-label in medium priority:  tensor(4)
-label in medium priority:  tensor(4)
-label in high priority:  tensor(0)
-iter_list:  [(tensor([471.6858, 385.6772, 726.6564, 677.2893]), tensor(0.1746), tensor(1)), (tensor([493.4087, 431.0998, 737.4316, 682.5475]), tensor(0.1834), tensor(1)), (tensor([254.4293, 486.8476, 491.8376, 617.5201]), tensor(0.3267), tensor(1)), (tensor([495.6059, 466.8448, 727.6298, 756.7924]), tensor(0.2785), tensor(1)), (tensor([195.1018, 756.1452, 558.0358, 956.8019]), tensor(0.1592), tensor(0)), (tensor([202.7862, 858.1013, 500.5435, 960.5375]), tensor(0.5933), tensor(0)), (tensor([376.8421, 188.3352, 415.1267, 214.4397]), tensor(0.1928), tensor(5)), (tensor([341.6502, 243.5929, 368.0055, 268.5555]), tensor(0.1774), tensor(5)), (tensor([339.6055, 198.8441, 418.6879, 414.3675]), tensor(0.2680), tensor(5)), (tensor([482.8678, 345.0009, 723.1187, 475.5717]), tensor(0.2227), tensor(6)), (tensor([329.9530, 296.1306, 441.2533, 425.6866]), tensor(0.1909), tensor(3)), (tensor([133.5709, 370.3075, 254.7888, 494.8535]), tensor(0.2018), tensor(3)), (tensor([361.7492, 402.1241, 626.8557, 491.8636]), tensor(0.2012), tensor(6)), (tensor([481.3205, 395.6165, 726.8588, 476.8011]), tensor(0.4069), tensor(6)), (tensor([230.6051, 421.9778, 513.5674, 504.6089]), tensor(0.2107), tensor(6)), (tensor([244.1686, 447.0301, 498.9762, 524.7156]), tensor(0.1765), tensor(6)), (tensor([491.1093, 468.1948, 730.6869, 565.4596]), tensor(0.3231), tensor(6)), (tensor([490.8102, 472.4334, 723.2443, 558.7625]), tensor(0.1750), tensor(6)), (tensor([482.6917, 462.7326, 719.7729, 636.0472]), tensor(0.3840), tensor(6)), (tensor([-5.6344e-01,  5.4395e+02,  1.4987e+02,  9.1779e+02]), tensor(0.3688), tensor(3)), (tensor([ -3.8224, 503.0020, 519.1252, 960.8624]), tensor(0.3981), tensor(4)), (tensor([467.7569, 609.2005, 719.3712, 956.2618]), tensor(0.4329), tensor(4)), (tensor([432.5091, 721.5756, 682.9730, 954.0046]), tensor(0.2670), tensor(4)), (tensor([480.0183, 722.0999, 716.8533, 955.8892]), tensor(0.2222), tensor(4))]
-Detected Clutter on the floor near the bed with confidence 0.175 at location [471.69, 385.68, 726.66, 677.29]
-Detected Clutter on the floor near the bed with confidence 0.183 at location [493.41, 431.1, 737.43, 682.55]
-Detected Clutter on the floor near the bed with confidence 0.327 at location [254.43, 486.85, 491.84, 617.52]
-Detected Clutter on the floor near the bed with confidence 0.279 at location [495.61, 466.84, 727.63, 756.79]
-Detected Rug on the floor with confidence 0.159 at location [195.1, 756.15, 558.04, 956.8]
-Detected Rug on the floor with confidence 0.593 at location [202.79, 858.1, 500.54, 960.54]
-Detected Low lighting with confidence 0.193 at location [376.84, 188.34, 415.13, 214.44]
-Detected Low lighting with confidence 0.177 at location [341.65, 243.59, 368.01, 268.56]
-Detected Low lighting with confidence 0.268 at location [339.61, 198.84, 418.69, 414.37]
-Detected Items hanging off edge of bed with confidence 0.223 at location [482.87, 345.0, 723.12, 475.57]
-Detected Unstable rolling chairs with confidence 0.191 at location [329.95, 296.13, 441.25, 425.69]
-Detected Unstable rolling chairs with confidence 0.202 at location [133.57, 370.31, 254.79, 494.85]
-Detected Items hanging off edge of bed with confidence 0.201 at location [361.75, 402.12, 626.86, 491.86]
-Detected Items hanging off edge of bed with confidence 0.407 at location [481.32, 395.62, 726.86, 476.8]
-Detected Items hanging off edge of bed with confidence 0.211 at location [230.61, 421.98, 513.57, 504.61]
-Detected Items hanging off edge of bed with confidence 0.177 at location [244.17, 447.03, 498.98, 524.72]
-Detected Items hanging off edge of bed with confidence 0.323 at location [491.11, 468.19, 730.69, 565.46]
-Detected Items hanging off edge of bed with confidence 0.175 at location [490.81, 472.43, 723.24, 558.76]
-Detected Items hanging off edge of bed with confidence 0.384 at location [482.69, 462.73, 719.77, 636.05]
-Detected Unstable rolling chairs with confidence 0.369 at location [-0.56, 543.95, 149.87, 917.79]
-Detected Uneven flooring with confidence 0.398 at location [-3.82, 503.0, 519.13, 960.86]
-Detected Uneven flooring with confidence 0.433 at location [467.76, 609.2, 719.37, 956.26]
-Detected Uneven flooring with confidence 0.267 at location [432.51, 721.58, 682.97, 954.0]
-Detected Uneven flooring with confidence 0.222 at location [480.02, 722.1, 716.85, 955.89]
-Bounding box:  [BoundingBox(box=[471.69, 385.68, 726.66, 677.29], score=0.17463916540145874, label='Clutter on the floor near the bed'), BoundingBox(box=[493.41, 431.1, 737.43, 682.55], score=0.18338055908679962, label='Clutter on the floor near the bed'), BoundingBox(box=[254.43, 486.85, 491.84, 617.52], score=0.32665979862213135, label='Clutter on the floor near the bed'), BoundingBox(box=[495.61, 466.84, 727.63, 756.79], score=0.2785179913043976, label='Clutter on the floor near the bed'), BoundingBox(box=[195.1, 756.15, 558.04, 956.8], score=0.15922990441322327, label='Rug on the floor'), BoundingBox(box=[202.79, 858.1, 500.54, 960.54], score=0.5933486819267273, label='Rug on the floor'), BoundingBox(box=[376.84, 188.34, 415.13, 214.44], score=0.19282013177871704, label='Low lighting'), BoundingBox(box=[341.65, 243.59, 368.01, 268.56], score=0.17739124596118927, label='Low lighting'), BoundingBox(box=[339.61, 198.84, 418.69, 414.37], score=0.26796311140060425, label='Low lighting'), BoundingBox(box=[482.87, 345.0, 723.12, 475.57], score=0.22267121076583862, label='Items hanging off edge of bed'), BoundingBox(box=[329.95, 296.13, 441.25, 425.69], score=0.19085979461669922, label='Unstable rolling chairs'), BoundingBox(box=[133.57, 370.31, 254.79, 494.85], score=0.20178227126598358, label='Unstable rolling chairs'), BoundingBox(box=[361.75, 402.12, 626.86, 491.86], score=0.20118339359760284, label='Items hanging off edge of bed'), BoundingBox(box=[481.32, 395.62, 726.86, 476.8], score=0.4068954288959503, label='Items hanging off edge of bed'), BoundingBox(box=[230.61, 421.98, 513.57, 504.61], score=0.21068741381168365, label='Items hanging off edge of bed'), BoundingBox(box=[244.17, 447.03, 498.98, 524.72], score=0.17652878165245056, label='Items hanging off edge of bed'), BoundingBox(box=[491.11, 468.19, 730.69, 565.46], score=0.32313644886016846, label='Items hanging off edge of bed'), BoundingBox(box=[490.81, 472.43, 723.24, 558.76], score=0.17502368986606598, label='Items hanging off edge of bed'), BoundingBox(box=[482.69, 462.73, 719.77, 636.05], score=0.3840230107307434, label='Items hanging off edge of bed'), BoundingBox(box=[-0.56, 543.95, 149.87, 917.79], score=0.36882925033569336, label='Unstable rolling chairs'), BoundingBox(box=[-3.82, 503.0, 519.13, 960.86], score=0.39806118607521057, label='Uneven flooring'), BoundingBox(box=[467.76, 609.2, 719.37, 956.26], score=0.43286842107772827, label='Uneven flooring'), BoundingBox(box=[432.51, 721.58, 682.97, 954.0], score=0.26700276136398315, label='Uneven flooring'), BoundingBox(box=[480.02, 722.1, 716.85, 955.89], score=0.22215873003005981, label='Uneven flooring')]
-Sending request with /home/prathik-somanath/git/responsible/backend-server/temp_image.png to riskitfree as d63e96e4-d6f3-430b-9b75-77fdccfc0cac.png
-Uploaading image to  s3
-File uploaded to s3 d63e96e4-d6f3-430b-9b75-77fdccfc0cac.png
-File /home/prathik-somanath/git/responsible/backend-server/temp_image.png uploaded to d63e96e4-d6f3-430b-9b75-77fdccfc0cac.png.
-Inside create_space_log
-Result:  InsertOneResult(ObjectId('6802fba60437f57ae7546e79'), acknowledged=True)
-INFO:     2603:8000:ba00:2aae:dde4:c975:a41f:61d0:0 - "POST /space/logs/upload-image HTTP/1.1" 200 OK
-Decoding token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODAwMzI5MTBmODVmMzUyMGI5ZWE5NzciLCJleHAiOjE3NDUxNzYwMDN9.bZwACIluQ9CNqVDSz9Vzvl5ppHor9KfKVrrzhr2xShU
-Payload: {'sub': '680032910f85f3520b9ea977', 'exp': 1745176003}
-Inside get_space_by_id
-INFO:     2603:8000:ba00:2aae:dde4:c975:a41f:61d0:0 - "GET /space/6802f5b9b00925a45ffb34f3 HTTP/1.1" 200 OK
-Decoding token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODAwMzI5MTBmODVmMzUyMGI5ZWE5NzciLCJleHAiOjE3NDUxNzYwMDN9.bZwACIluQ9CNqVDSz9Vzvl5ppHor9KfKVrrzhr2xShU
-Payload: {'sub': '680032910f85f3520b9ea977', 'exp': 1745176003}
-Inside get_space_by_id
-INFO:     2603:8000:ba00:2aae:dde4:c975:a41f:61d0:0 - "GET /space/logs/space/6802f5b9b00925a45ffb34f3 HTTP/1.1" 200 OK
-INFO:     2603:8000:ba00:2aae:dde4:c975:a41f:61d0:0 - "GET /patient HTTP/1.1" 307 Temporary Redirect
-Decoding token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODAwMzI5MTBmODVmMzUyMGI5ZWE5NzciLCJleHAiOjE3NDUxNzYwMDN9.bZwACIluQ9CNqVDSz9Vzvl5ppHor9KfKVrrzhr2xShU
-Payload: {'sub': '680032910f85f3520b9ea977', 'exp': 1745176003}
-INFO:     2603:8000:ba00:2aae:dde4:c975:a41f:61d0:0 - "GET /patient/ HTTP/1.1" 200 OK
-Decoding token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODAwMzI5MTBmODVmMzUyMGI5ZWE5NzciLCJleHAiOjE3NDUxNzYwMDN9.bZwACIluQ9CNqVDSz9Vzvl5ppHor9KfKVrrzhr2xShU
-Payload: {'sub': '680032910f85f3520b9ea977', 'exp': 1745176003}
-Inside get_space_by_id
-INFO:     2603:8000:ba00:2aae:dde4:c975:a41f:61d0:0 - "GET /space/logs/6802fba60437f57ae7546e79 HTTP/1.1" 200 OK
-Decoding token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODAwMzI5MTBmODVmMzUyMGI5ZWE5NzciLCJleHAiOjE3NDUxNzYwMDN9.bZwACIluQ9CNqVDSz9Vzvl5ppHor9KfKVrrzhr2xShU
-Payload: {'sub': '680032910f85f3520b9ea977', 'exp': 1745176003}
-Inside upload_image with space_id  6802f5b9b00925a45ffb34f3
-Inside get_space_by_id
-Contents type:  <class 'bytes'>
-Image type:  <class 'PIL.JpegImagePlugin.JpegImageFile'>
-Sending request with /home/prathik-somanath/git/responsible/backend-server/temp_image.png to riskitfree as 9bf9f6fd-4b9d-44c9-82fe-a9bd0b65e8e4.png
-Uploaading image to  s3
-File uploaded to s3 9bf9f6fd-4b9d-44c9-82fe-a9bd0b65e8e4.png
-File /home/prathik-somanath/git/responsible/backend-server/temp_image.png uploaded to 9bf9f6fd-4b9d-44c9-82fe-a9bd0b65e8e4.png.
-Getting patient info for  ['680195f77604a4525291c0e9', '6801a0dbdfc8881e853afff4']
-Getting hazards and recommendations
-Inside _get_hazards_and_recommendations
-Encoded image:  <class 'str'>
-Prompt of condition:  User has a condition: Knee pain. User has a condition: Old age. 
-Hazards:  [Hazard(priority='High', description='Rug on the floor poses a tripping hazard', score=0.9), Hazard(priority='High', description='Cluttered floor near bed and desk', score=0.85), Hazard(priority='High', description='Unstable chair with wheels', score=0.8), Hazard(priority='Medium', description='Poor lighting', score=0.7), Hazard(priority='Medium', description='Items under the bed', score=0.6), Hazard(priority='Medium', description='Clutter on the desk', score=0.6), Hazard(priority='Medium', description='Sharp edges on the bed frame', score=0.5), Hazard(priority='Low', description='Bag on the floor', score=0.3), Hazard(priority='Low', description='Chair close to bed', score=0.3), Hazard(priority='Low', description='Items near window', score=0.3), Hazard(priority='Low', description='Clutter on bed', score=0.2), Hazard(priority='Low', description='Poor lighting near doorway', score=0.2)]
-Recommendations:  ['Remove the rug to prevent tripping hazards.', 'Declutter the floor, especially near the bed and desk, to create a clear walking path.', 'Ensure the floor lamp provides adequate lighting to improve visibility.', 'Organize the items under the bed to reduce clutter.', 'Consider a more stable chair without wheels for the desk area.', 'Minimize the items on the desk to avoid items falling and causing tripping hazards.', 'Rearrange the items around the bed to give a clear walking path.', 'Clear items near the window and under the bed.', 'Replace the bed frame with one that has no sharp edges.', 'Move the desk chair away from the bed to avoid bumping into it.', 'Reduce the amount of items on the bed.', 'Ensure adequate lighting near the doorway.', 'Put away the bag on the floor']
-Walking path score:  0.6
-hazard_list:  high_priority=['Rug on the floor poses a tripping hazard', 'Cluttered floor near bed and desk', 'Unstable chair with wheels'] medium_priority=['Poor lighting', 'Items under the bed', 'Clutter on the desk', 'Sharp edges on the bed frame'] low_priority=['Bag on the floor', 'Chair close to bed', 'Items near window', 'Clutter on bed', 'Poor lighting near doorway']
-Inside _get_risk_score
-Risk score:  62
-Safety Score:  75.19999999999999
-Inside _get_bounding_box
-hazards texts:  [['Rug on the floor poses a tripping hazard', 'Cluttered floor near bed and desk', 'Unstable chair with wheels', 'Poor lighting', 'Items under the bed', 'Clutter on the desk', 'Sharp edges on the bed frame', 'Bag on the floor', 'Chair close to bed', 'Items near window', 'Clutter on bed', 'Poor lighting near doorway']]
-Sending the inputs through processor
-Forward pass
-Get preprocessed image
-Sending post_process_grounded_object_detection with threshold  0.15
-label in medium priority:  tensor(3)
-label in low priority:  tensor(9)
-label in low priority:  tensor(9)
-label in low priority:  tensor(9)
-label in low priority:  tensor(9)
-label in low priority:  tensor(9)
-label in medium priority:  tensor(3)
-label in low priority:  tensor(9)
-label in medium priority:  tensor(3)
-label in medium priority:  tensor(3)
-label in low priority:  tensor(9)
-label in medium priority:  tensor(3)
-label in low priority:  tensor(9)
-label in low priority:  tensor(8)
-label in low priority:  tensor(8)
-label in medium priority:  tensor(5)
-label in medium priority:  tensor(5)
-label in low priority:  tensor(8)
-label in low priority:  tensor(8)
-label in medium priority:  tensor(5)
-label in low priority:  tensor(8)
-label in low priority:  tensor(8)
-label in low priority:  tensor(7)
-label in low priority:  tensor(7)
-label in high priority:  tensor(1)
-label in low priority:  tensor(8)
-label in low priority:  tensor(7)
-label in low priority:  tensor(7)
-label in low priority:  tensor(10)
-label in low priority:  tensor(10)
-label in medium priority:  tensor(4)
-label in medium priority:  tensor(4)
-label in medium priority:  tensor(6)
-label in medium priority:  tensor(4)
-label in medium priority:  tensor(6)
-label in low priority:  tensor(7)
-label in low priority:  tensor(10)
-label in low priority:  tensor(7)
-label in high priority:  tensor(0)
-label in low priority:  tensor(7)
-label in low priority:  tensor(7)
-label in low priority:  tensor(8)
-label in medium priority:  tensor(6)
-label in low priority:  tensor(7)
-label in low priority:  tensor(7)
-label in low priority:  tensor(7)
-label in low priority:  tensor(7)
-label in low priority:  tensor(7)
-label in low priority:  tensor(7)
-label in low priority:  tensor(7)
-label in high priority:  tensor(1)
-label in high priority:  tensor(0)
-label in low priority:  tensor(7)
-iter_list:  [(tensor([ -1.1269, 479.3600, 138.7007, 650.8063]), tensor(0.3498), tensor(1)), (tensor([219.0600, 727.6901, 373.2791, 863.9579]), tensor(0.2766), tensor(0)), (tensor([473.3322, 722.6074, 720.2487, 959.1559]), tensor(0.1581), tensor(1)), (tensor([424.7123, 850.5328, 557.4823, 951.2791]), tensor(0.3131), tensor(0)), (tensor([ 3.0915e+02, -1.6150e-02,  3.7730e+02,  2.0381e+01]), tensor(0.4685), tensor(3)), (tensor([344.2942, 262.2635, 381.2223, 287.2903]), tensor(0.1641), tensor(3)), (tensor([310.2102, 312.4173, 335.1488, 336.4394]), tensor(0.1787), tensor(3)), (tensor([308.1133, 309.4564, 381.4941, 454.6120]), tensor(0.1790), tensor(3)), (tensor([309.2164, 266.0627, 388.0397, 458.9478]), tensor(0.3323), tensor(3)), (tensor([ 24.2194, 419.8015, 334.5314, 511.1561]), tensor(0.4464), tensor(5)), (tensor([220.2431, 425.7117, 328.3809, 482.8535]), tensor(0.1692), tensor(5)), (tensor([ 12.2739, 432.8257, 333.2266, 537.2529]), tensor(0.2088), tensor(5)), (tensor([249.8852, 586.5439, 488.3803, 725.2949]), tensor(0.2554), tensor(4)), (tensor([217.4098, 497.8999, 521.8842, 726.7852]), tensor(0.3481), tensor(4)), (tensor([493.9883, 570.0836, 723.7947, 758.1566]), tensor(0.2384), tensor(6)), (tensor([307.3539, 619.0519, 482.6558, 726.9695]), tensor(0.1681), tensor(4)), (tensor([273.2115, 611.3081, 430.2778, 726.4097]), tensor(0.1681), tensor(6)), (tensor([1.4993e-01, 5.6269e+02, 4.9851e+01, 9.5799e+02]), tensor(0.1617), tensor(6))]
-Detected Cluttered floor near bed and desk with confidence 0.35 at location [-1.13, 479.36, 138.7, 650.81]
-Detected Rug on the floor poses a tripping hazard with confidence 0.277 at location [219.06, 727.69, 373.28, 863.96]
-Detected Cluttered floor near bed and desk with confidence 0.158 at location [473.33, 722.61, 720.25, 959.16]
-Detected Rug on the floor poses a tripping hazard with confidence 0.313 at location [424.71, 850.53, 557.48, 951.28]
-Detected Poor lighting with confidence 0.469 at location [309.15, -0.02, 377.3, 20.38]
-Detected Poor lighting with confidence 0.164 at location [344.29, 262.26, 381.22, 287.29]
-Detected Poor lighting with confidence 0.179 at location [310.21, 312.42, 335.15, 336.44]
-Detected Poor lighting with confidence 0.179 at location [308.11, 309.46, 381.49, 454.61]
-Detected Poor lighting with confidence 0.332 at location [309.22, 266.06, 388.04, 458.95]
-Detected Clutter on the desk with confidence 0.446 at location [24.22, 419.8, 334.53, 511.16]
-Detected Clutter on the desk with confidence 0.169 at location [220.24, 425.71, 328.38, 482.85]
-Detected Clutter on the desk with confidence 0.209 at location [12.27, 432.83, 333.23, 537.25]
-Detected Items under the bed with confidence 0.255 at location [249.89, 586.54, 488.38, 725.29]
-Detected Items under the bed with confidence 0.348 at location [217.41, 497.9, 521.88, 726.79]
-Detected Sharp edges on the bed frame with confidence 0.238 at location [493.99, 570.08, 723.79, 758.16]
-Detected Items under the bed with confidence 0.168 at location [307.35, 619.05, 482.66, 726.97]
-Detected Sharp edges on the bed frame with confidence 0.168 at location [273.21, 611.31, 430.28, 726.41]
-Detected Sharp edges on the bed frame with confidence 0.162 at location [0.15, 562.69, 49.85, 957.99]
-Bounding box:  [BoundingBox(box=[-1.13, 479.36, 138.7, 650.81], score=0.3498321771621704, label='Cluttered floor near bed and desk'), BoundingBox(box=[219.06, 727.69, 373.28, 863.96], score=0.2765764594078064, label='Rug on the floor poses a tripping hazard'), BoundingBox(box=[473.33, 722.61, 720.25, 959.16], score=0.1581227332353592, label='Cluttered floor near bed and desk'), BoundingBox(box=[424.71, 850.53, 557.48, 951.28], score=0.3131408095359802, label='Rug on the floor poses a tripping hazard'), BoundingBox(box=[309.15, -0.02, 377.3, 20.38], score=0.4685153365135193, label='Poor lighting'), BoundingBox(box=[344.29, 262.26, 381.22, 287.29], score=0.1640871912240982, label='Poor lighting'), BoundingBox(box=[310.21, 312.42, 335.15, 336.44], score=0.1786729395389557, label='Poor lighting'), BoundingBox(box=[308.11, 309.46, 381.49, 454.61], score=0.17903830111026764, label='Poor lighting'), BoundingBox(box=[309.22, 266.06, 388.04, 458.95], score=0.3322708308696747, label='Poor lighting'), BoundingBox(box=[24.22, 419.8, 334.53, 511.16], score=0.4463994801044464, label='Clutter on the desk'), BoundingBox(box=[220.24, 425.71, 328.38, 482.85], score=0.1691625416278839, label='Clutter on the desk'), BoundingBox(box=[12.27, 432.83, 333.23, 537.25], score=0.20881256461143494, label='Clutter on the desk'), BoundingBox(box=[249.89, 586.54, 488.38, 725.29], score=0.2553790211677551, label='Items under the bed'), BoundingBox(box=[217.41, 497.9, 521.88, 726.79], score=0.3480786681175232, label='Items under the bed'), BoundingBox(box=[493.99, 570.08, 723.79, 758.16], score=0.2384297251701355, label='Sharp edges on the bed frame'), BoundingBox(box=[307.35, 619.05, 482.66, 726.97], score=0.16807648539543152, label='Items under the bed'), BoundingBox(box=[273.21, 611.31, 430.28, 726.41], score=0.16811026632785797, label='Sharp edges on the bed frame'), BoundingBox(box=[0.15, 562.69, 49.85, 957.99], score=0.1616695076227188, label='Sharp edges on the bed frame')]
-Sending request with /home/prathik-somanath/git/responsible/backend-server/temp_image.png to riskitfree as 1b89d137-7a2e-4d4d-a008-a09ff16e8aec.png
-Uploaading image to  s3
-File uploaded to s3 1b89d137-7a2e-4d4d-a008-a09ff16e8aec.png
-File /home/prathik-somanath/git/responsible/backend-server/temp_image.png uploaded to 1b89d137-7a2e-4d4d-a008-a09ff16e8aec.png.
-Inside create_space_log
-Result:  InsertOneResult(ObjectId('6802fc340437f57ae7546e7a'), acknowledged=True)
-INFO:     2603:8000:ba00:2aae:dde4:c975:a41f:61d0:0 - "POST /space/logs/upload-image HTTP/1.1" 200 OK
-Decoding token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODAwMzI5MTBmODVmMzUyMGI5ZWE5NzciLCJleHAiOjE3NDUxNzYwMDN9.bZwACIluQ9CNqVDSz9Vzvl5ppHor9KfKVrrzhr2xShU
-Payload: {'sub': '680032910f85f3520b9ea977', 'exp': 1745176003}
-Inside get_space_by_id
-INFO:     2603:8000:ba00:2aae:dde4:c975:a41f:61d0:0 - "GET /space/6802f5b9b00925a45ffb34f3 HTTP/1.1" 200 OK
-Decoding token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODAwMzI5MTBmODVmMzUyMGI5ZWE5NzciLCJleHAiOjE3NDUxNzYwMDN9.bZwACIluQ9CNqVDSz9Vzvl5ppHor9KfKVrrzhr2xShU
-Payload: {'sub': '680032910f85f3520b9ea977', 'exp': 1745176003}
-Inside get_space_by_id
-INFO:     2603:8000:ba00:2aae:dde4:c975:a41f:61d0:0 - "GET /space/logs/space/6802f5b9b00925a45ffb34f3 HTTP/1.1" 200 OK
-INFO:     2603:8000:ba00:2aae:dde4:c975:a41f:61d0:0 - "GET /patient HTTP/1.1" 307 Temporary Redirect
-Decoding token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODAwMzI5MTBmODVmMzUyMGI5ZWE5NzciLCJleHAiOjE3NDUxNzYwMDN9.bZwACIluQ9CNqVDSz9Vzvl5ppHor9KfKVrrzhr2xShU
-Payload: {'sub': '680032910f85f3520b9ea977', 'exp': 1745176003}
-INFO:     2603:8000:ba00:2aae:dde4:c975:a41f:61d0:0 - "GET /patient/ HTTP/1.1" 200 OK
-Decoding token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODAwMzI5MTBmODVmMzUyMGI5ZWE5NzciLCJleHAiOjE3NDUxNzYwMDN9.bZwACIluQ9CNqVDSz9Vzvl5ppHor9KfKVrrzhr2xShU
-Payload: {'sub': '680032910f85f3520b9ea977', 'exp': 1745176003}
-Inside get_space_by_id
-INFO:     2603:8000:ba00:2aae:dde4:c975:a41f:61d0:0 - "GET /space/logs/6802fc340437f57ae7546e7a HTTP/1.1" 200 OK
-Decoding token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODAwMzI5MTBmODVmMzUyMGI5ZWE5NzciLCJleHAiOjE3NDUxNzYwMDN9.bZwACIluQ9CNqVDSz9Vzvl5ppHor9KfKVrrzhr2xShU
-Payload: {'sub': '680032910f85f3520b9ea977', 'exp': 1745176003}
-Inside get_space_by_id
-INFO:     2603:8000:ba00:2aae:dde4:c975:a41f:61d0:0 - "GET /space/6802f5b9b00925a45ffb34f3 HTTP/1.1" 200 OK
-Decoding token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODAwMzI5MTBmODVmMzUyMGI5ZWE5NzciLCJleHAiOjE3NDUxNzYwMDN9.bZwACIluQ9CNqVDSz9Vzvl5ppHor9KfKVrrzhr2xShU
-Payload: {'sub': '680032910f85f3520b9ea977', 'exp': 1745176003}
-Inside get_space_by_id
-INFO:     2603:8000:ba00:2aae:dde4:c975:a41f:61d0:0 - "GET /space/logs/space/6802f5b9b00925a45ffb34f3 HTTP/1.1" 200 OK
-INFO:     2603:8000:ba00:2aae:dde4:c975:a41f:61d0:0 - "GET /patient HTTP/1.1" 307 Temporary Redirect
-Decoding token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODAwMzI5MTBmODVmMzUyMGI5ZWE5NzciLCJleHAiOjE3NDUxNzYwMDN9.bZwACIluQ9CNqVDSz9Vzvl5ppHor9KfKVrrzhr2xShU
-Payload: {'sub': '680032910f85f3520b9ea977', 'exp': 1745176003}
-INFO:     2603:8000:ba00:2aae:dde4:c975:a41f:61d0:0 - "GET /patient/ HTTP/1.1" 200 OK
-Decoding token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODAwMzI5MTBmODVmMzUyMGI5ZWE5NzciLCJleHAiOjE3NDUxNzYwMDN9.bZwACIluQ9CNqVDSz9Vzvl5ppHor9KfKVrrzhr2xShU
-Payload: {'sub': '680032910f85f3520b9ea977', 'exp': 1745176003}
-Inside get_space_by_id
-INFO:     2603:8000:ba00:2aae:dde4:c975:a41f:61d0:0 - "GET /space/6800bd08b9f934916a772c00 HTTP/1.1" 200 OK
-Decoding token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODAwMzI5MTBmODVmMzUyMGI5ZWE5NzciLCJleHAiOjE3NDUxNzYwMDN9.bZwACIluQ9CNqVDSz9Vzvl5ppHor9KfKVrrzhr2xShU
-Payload: {'sub': '680032910f85f3520b9ea977', 'exp': 1745176003}
-Inside get_space_by_id
-INFO:     2603:8000:ba00:2aae:dde4:c975:a41f:61d0:0 - "GET /space/logs/space/6800bd08b9f934916a772c00 HTTP/1.1" 200 OK
-INFO:     2603:8000:ba00:2aae:dde4:c975:a41f:61d0:0 - "GET /patient HTTP/1.1" 307 Temporary Redirect
-Decoding token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODAwMzI5MTBmODVmMzUyMGI5ZWE5NzciLCJleHAiOjE3NDUxNzYwMDN9.bZwACIluQ9CNqVDSz9Vzvl5ppHor9KfKVrrzhr2xShU
-Payload: {'sub': '680032910f85f3520b9ea977', 'exp': 1745176003}
-INFO:     2603:8000:ba00:2aae:dde4:c975:a41f:61d0:0 - "GET /patient/ HTTP/1.1" 200 OK
-Decoding token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODAwMzI5MTBmODVmMzUyMGI5ZWE5NzciLCJleHAiOjE3NDUxNzYwMDN9.bZwACIluQ9CNqVDSz9Vzvl5ppHor9KfKVrrzhr2xShU
-Payload: {'sub': '680032910f85f3520b9ea977', 'exp': 1745176003}
-Inside get_space_by_id
-INFO:     2603:8000:ba00:2aae:dde4:c975:a41f:61d0:0 - "GET /space/6800bd08b9f934916a772c00 HTTP/1.1" 200 OK
-Decoding token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODAwMzI5MTBmODVmMzUyMGI5ZWE5NzciLCJleHAiOjE3NDUxNzYwMDN9.bZwACIluQ9CNqVDSz9Vzvl5ppHor9KfKVrrzhr2xShU
-Payload: {'sub': '680032910f85f3520b9ea977', 'exp': 1745176003}
-Inside get_space_by_id
-INFO:     2603:8000:ba00:2aae:dde4:c975:a41f:61d0:0 - "GET /space/logs/space/6800bd08b9f934916a772c00 HTTP/1.1" 200 OK
-INFO:     2603:8000:ba00:2aae:dde4:c975:a41f:61d0:0 - "GET /patient HTTP/1.1" 307 Temporary Redirect
-Decoding token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODAwMzI5MTBmODVmMzUyMGI5ZWE5NzciLCJleHAiOjE3NDUxNzYwMDN9.bZwACIluQ9CNqVDSz9Vzvl5ppHor9KfKVrrzhr2xShU
-Payload: {'sub': '680032910f85f3520b9ea977', 'exp': 1745176003}
-INFO:     2603:8000:ba00:2aae:dde4:c975:a41f:61d0:0 - "GET /patient/ HTTP/1.1" 200 OK
-Decoding token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODAwMzI5MTBmODVmMzUyMGI5ZWE5NzciLCJleHAiOjE3NDUxNzYwMDN9.bZwACIluQ9CNqVDSz9Vzvl5ppHor9KfKVrrzhr2xShU
-Payload: {'sub': '680032910f85f3520b9ea977', 'exp': 1745176003}
-Inside get_space_by_id
-INFO:     2603:8000:ba00:2aae:dde4:c975:a41f:61d0:0 - "GET /space/6800bd08b9f934916a772c00 HTTP/1.1" 200 OK
-Decoding token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODAwMzI5MTBmODVmMzUyMGI5ZWE5NzciLCJleHAiOjE3NDUxNzYwMDN9.bZwACIluQ9CNqVDSz9Vzvl5ppHor9KfKVrrzhr2xShU
-Payload: {'sub': '680032910f85f3520b9ea977', 'exp': 1745176003}
-Inside get_space_by_id
-INFO:     2603:8000:ba00:2aae:dde4:c975:a41f:61d0:0 - "GET /space/logs/space/6800bd08b9f934916a772c00 HTTP/1.1" 200 OK
-INFO:     2603:8000:ba00:2aae:dde4:c975:a41f:61d0:0 - "GET /patient HTTP/1.1" 307 Temporary Redirect
-Decoding token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODAwMzI5MTBmODVmMzUyMGI5ZWE5NzciLCJleHAiOjE3NDUxNzYwMDN9.bZwACIluQ9CNqVDSz9Vzvl5ppHor9KfKVrrzhr2xShU
-Payload: {'sub': '680032910f85f3520b9ea977', 'exp': 1745176003}
-INFO:     2603:8000:ba00:2aae:dde4:c975:a41f:61d0:0 - "GET /patient/ HTTP/1.1" 200 OK
-Decoding token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODAwMzI5MTBmODVmMzUyMGI5ZWE5NzciLCJleHAiOjE3NDUxNzYwMDN9.bZwACIluQ9CNqVDSz9Vzvl5ppHor9KfKVrrzhr2xShU
-Payload: {'sub': '680032910f85f3520b9ea977', 'exp': 1745176003}
-Inside upload_image with space_id  6800bd08b9f934916a772c00
-Inside get_space_by_id
-Contents type:  <class 'bytes'>
-Image type:  <class 'PIL.JpegImagePlugin.JpegImageFile'>
-Sending request with /home/prathik-somanath/git/responsible/backend-server/temp_image.png to riskitfree as 0b336a5e-b9bc-41b2-9675-b9be5f431a7b.png
-Uploaading image to  s3
-File uploaded to s3 0b336a5e-b9bc-41b2-9675-b9be5f431a7b.png
-File /home/prathik-somanath/git/responsible/backend-server/temp_image.png uploaded to 0b336a5e-b9bc-41b2-9675-b9be5f431a7b.png.
-Getting patient info for  ['680195f77604a4525291c0e9', '6801a0dbdfc8881e853afff4']
-Getting hazards and recommendations
-Inside _get_hazards_and_recommendations
-Encoded image:  <class 'str'>
-Prompt of condition:  User has a condition: Knee pain. User has a condition: Old age. 
-Hazards:  [Hazard(priority='High', description='Uneven floor transition between tiled and wooden flooring can cause tripping hazard', score=0.9), Hazard(priority='High', description='Items stored on high shelves are difficult to reach and can fall', score=0.8), Hazard(priority='High', description='Pots on the stove may contain hot liquids which can cause burns', score=0.7), Hazard(priority='Medium', description='Wet floor near sink', score=0.6), Hazard(priority='Medium', description='Poor lighting in certain areas', score=0.5), Hazard(priority='Medium', description='Clutter on countertops', score=0.4), Hazard(priority='Low', description='Appliances near the edge of the counter', score=0.3), Hazard(priority='Low', description='Cords hanging low from appliances', score=0.2), Hazard(priority='Low', description='Cabinet doors may be left open', score=0.1), Hazard(priority='Low', description='Dirty dishes can attract pests', score=0.1)]
-Recommendations:  ['Install grab bars near the stove and sink for added stability.', 'Ensure even lighting distribution and consider brighter bulbs to improve visibility.', 'Remove clutter from countertops and floor to provide clear walking paths.', 'Address the uneven floor transition by installing a ramp or transition strip to prevent tripping.', 'Store frequently used items within easy reach to avoid the need for step stools or reaching high shelves.', 'Keep the floor dry and clean to prevent slips and falls.', 'Relocate or secure appliances that are near the edge of the counter.', 'Use cord organizers to keep appliance cords off the floor and out of walking paths.', 'Develop a habit of closing cabinet doors to prevent bumping into them.', 'Maintain clean dishes to prevent pest attraction.']
-Walking path score:  0.6
-hazard_list:  high_priority=['Uneven floor transition between tiled and wooden flooring can cause tripping hazard', 'Items stored on high shelves are difficult to reach and can fall', 'Pots on the stove may contain hot liquids which can cause burns'] medium_priority=['Wet floor near sink', 'Poor lighting in certain areas', 'Clutter on countertops'] low_priority=['Appliances near the edge of the counter', 'Cords hanging low from appliances', 'Cabinet doors may be left open', 'Dirty dishes can attract pests']
-Inside _get_risk_score
-Risk score:  57
-Safety Score:  77.19999999999999
-Inside _get_bounding_box
-hazards texts:  [['Uneven floor transition between tiled and wooden flooring can cause tripping hazard', 'Items stored on high shelves are difficult to reach and can fall', 'Pots on the stove may contain hot liquids which can cause burns', 'Wet floor near sink', 'Poor lighting in certain areas', 'Clutter on countertops', 'Appliances near the edge of the counter', 'Cords hanging low from appliances', 'Cabinet doors may be left open', 'Dirty dishes can attract pests']]
-Sending the inputs through processor
-Forward pass
-Get preprocessed image
-Sending post_process_grounded_object_detection with threshold  0.15
-label in medium priority:  tensor(4)
-label in medium priority:  tensor(4)
-label in medium priority:  tensor(4)
-label in medium priority:  tensor(4)
-label in medium priority:  tensor(4)
-label in medium priority:  tensor(4)
-label in medium priority:  tensor(4)
-label in medium priority:  tensor(4)
-label in low priority:  tensor(8)
-label in low priority:  tensor(8)
-label in low priority:  tensor(9)
-label in low priority:  tensor(8)
-label in low priority:  tensor(8)
-label in low priority:  tensor(8)
-label in low priority:  tensor(8)
-label in low priority:  tensor(8)
-label in low priority:  tensor(8)
-label in low priority:  tensor(8)
-label in low priority:  tensor(8)
-label in low priority:  tensor(6)
-label in low priority:  tensor(8)
-label in low priority:  tensor(8)
-label in low priority:  tensor(8)
-label in low priority:  tensor(8)
-label in low priority:  tensor(6)
-label in high priority:  tensor(2)
-label in low priority:  tensor(9)
-label in low priority:  tensor(9)
-label in high priority:  tensor(2)
-label in high priority:  tensor(2)
-label in low priority:  tensor(9)
-label in low priority:  tensor(9)
-label in medium priority:  tensor(3)
-label in medium priority:  tensor(3)
-label in medium priority:  tensor(5)
-label in low priority:  tensor(9)
-label in low priority:  tensor(8)
-label in medium priority:  tensor(5)
-label in low priority:  tensor(9)
-label in medium priority:  tensor(5)
-label in low priority:  tensor(6)
-label in medium priority:  tensor(5)
-label in medium priority:  tensor(5)
-label in low priority:  tensor(8)
-label in low priority:  tensor(6)
-label in low priority:  tensor(8)
-label in low priority:  tensor(8)
-label in low priority:  tensor(8)
-label in low priority:  tensor(8)
-label in low priority:  tensor(6)
-label in low priority:  tensor(8)
-label in low priority:  tensor(8)
-label in low priority:  tensor(8)
-label in low priority:  tensor(8)
-label in low priority:  tensor(8)
-label in low priority:  tensor(8)
-label in low priority:  tensor(8)
-label in low priority:  tensor(8)
-label in low priority:  tensor(8)
-label in low priority:  tensor(6)
-label in low priority:  tensor(8)
-label in low priority:  tensor(8)
-label in low priority:  tensor(8)
-label in low priority:  tensor(6)
-label in low priority:  tensor(8)
-label in low priority:  tensor(8)
-label in low priority:  tensor(8)
-label in low priority:  tensor(8)
-label in low priority:  tensor(8)
-label in low priority:  tensor(8)
-label in low priority:  tensor(8)
-label in low priority:  tensor(8)
-label in low priority:  tensor(8)
-label in low priority:  tensor(8)
-label in low priority:  tensor(8)
-label in low priority:  tensor(8)
-label in low priority:  tensor(8)
-label in low priority:  tensor(8)
-label in low priority:  tensor(6)
-label in low priority:  tensor(8)
-label in low priority:  tensor(6)
-label in low priority:  tensor(8)
-label in low priority:  tensor(8)
-label in low priority:  tensor(8)
-label in low priority:  tensor(8)
-label in low priority:  tensor(8)
-label in low priority:  tensor(8)
-label in low priority:  tensor(8)
-label in high priority:  tensor(0)
-label in high priority:  tensor(0)
-label in high priority:  tensor(0)
-label in high priority:  tensor(0)
-label in high priority:  tensor(0)
-label in high priority:  tensor(0)
-label in high priority:  tensor(0)
-label in high priority:  tensor(0)
-label in medium priority:  tensor(4)
-label in high priority:  tensor(0)
-label in high priority:  tensor(0)
-label in high priority:  tensor(0)
-label in high priority:  tensor(0)
-label in high priority:  tensor(0)
-label in high priority:  tensor(0)
-label in high priority:  tensor(0)
-iter_list:  [(tensor([503.2301, 381.7701, 536.5984, 421.2831]), tensor(0.2199), tensor(2)), (tensor([324.4188, 408.8459, 372.7587, 430.2050]), tensor(0.2182), tensor(2)), (tensor([432.2765, 396.0527, 454.0669, 420.1573]), tensor(0.1752), tensor(2)), (tensor([524.6679, 570.3803, 711.9730, 651.4894]), tensor(0.1769), tensor(0)), (tensor([538.0022, 602.9575, 653.9544, 643.7097]), tensor(0.1522), tensor(0)), (tensor([504.3964, 558.5603, 722.6409, 716.6851]), tensor(0.2894), tensor(0)), (tensor([612.1215, 603.5021, 721.2636, 648.4570]), tensor(0.1594), tensor(0)), (tensor([2.4235e-01, 6.2283e+02, 8.5271e+01, 6.7233e+02]), tensor(0.1585), tensor(0)), (tensor([678.8934, 659.3256, 719.5154, 700.5511]), tensor(0.1530), tensor(0)), (tensor([373.7327, 556.5773, 727.5958, 961.7063]), tensor(0.3138), tensor(0)), (tensor([  3.5202, 558.3198, 490.0756, 946.5544]), tensor(0.3778), tensor(0)), (tensor([-3.1315e-01,  6.7431e+02,  2.0516e+02,  9.6108e+02]), tensor(0.2521), tensor(0)), (tensor([491.6317, 673.8048, 721.4917, 954.4084]), tensor(0.2043), tensor(0)), (tensor([146.1866, 776.6693, 333.7487, 873.6250]), tensor(0.1581), tensor(0)), (tensor([483.2736, 672.7345, 720.6735, 955.7285]), tensor(0.3686), tensor(0)), (tensor([3.6984e-01, 5.3866e+02, 5.0137e+02, 9.6223e+02]), tensor(0.2082), tensor(0)), (tensor([210.5131, 804.5729, 499.6147, 961.6171]), tensor(0.2538), tensor(0)), (tensor([506.7420, 770.9517, 713.7072, 953.0067]), tensor(0.1641), tensor(0)), (tensor([1.9003e-02, 3.7082e+00, 3.5153e+01, 2.8884e+01]), tensor(0.2678), tensor(4)), (tensor([672.1302,  32.1722, 719.6141,  78.9160]), tensor(0.1586), tensor(4)), (tensor([690.6755,  64.3543, 713.7253,  71.7034]), tensor(0.2632), tensor(4)), (tensor([680.7530,  60.8958, 720.5643,  78.4505]), tensor(0.2711), tensor(4)), (tensor([265.0865,  84.7351, 325.8604, 120.9106]), tensor(0.4446), tensor(4)), (tensor([484.9572,   1.9718, 725.5599, 192.2660]), tensor(0.2096), tensor(4)), (tensor([  4.1280,   4.2560, 488.9621, 211.2942]), tensor(0.1676), tensor(4)), (tensor([446.3459, 141.7531, 492.6986, 169.0483]), tensor(0.4286), tensor(4)), (tensor([514.8636, 419.1426, 616.7890, 429.8824]), tensor(0.3224), tensor(3)), (tensor([531.0424, 419.1993, 620.2904, 428.6281]), tensor(0.1674), tensor(3)), (tensor([618.2417, 417.8222, 715.9471, 429.5325]), tensor(0.1681), tensor(5)), (tensor([230.4987, 416.6565, 353.1653, 451.3920]), tensor(0.1745), tensor(5)), (tensor([237.8720, 412.5392, 446.3892, 466.1484]), tensor(0.1521), tensor(5)), (tensor([506.8677, 417.0737, 720.4836, 444.5380]), tensor(0.3818), tensor(5)), (tensor([604.1046, 423.1901, 716.5880, 436.6758]), tensor(0.1551), tensor(5)), (tensor([542.5001, 718.0608, 679.0681, 828.1120]), tensor(0.1666), tensor(4))]
-Detected Pots on the stove may contain hot liquids which can cause burns with confidence 0.22 at location [503.23, 381.77, 536.6, 421.28]
-Detected Pots on the stove may contain hot liquids which can cause burns with confidence 0.218 at location [324.42, 408.85, 372.76, 430.2]
-Detected Pots on the stove may contain hot liquids which can cause burns with confidence 0.175 at location [432.28, 396.05, 454.07, 420.16]
-Detected Uneven floor transition between tiled and wooden flooring can cause tripping hazard with confidence 0.177 at location [524.67, 570.38, 711.97, 651.49]
-Detected Uneven floor transition between tiled and wooden flooring can cause tripping hazard with confidence 0.152 at location [538.0, 602.96, 653.95, 643.71]
-Detected Uneven floor transition between tiled and wooden flooring can cause tripping hazard with confidence 0.289 at location [504.4, 558.56, 722.64, 716.69]
-Detected Uneven floor transition between tiled and wooden flooring can cause tripping hazard with confidence 0.159 at location [612.12, 603.5, 721.26, 648.46]
-Detected Uneven floor transition between tiled and wooden flooring can cause tripping hazard with confidence 0.158 at location [0.24, 622.83, 85.27, 672.33]
-Detected Uneven floor transition between tiled and wooden flooring can cause tripping hazard with confidence 0.153 at location [678.89, 659.33, 719.52, 700.55]
-Detected Uneven floor transition between tiled and wooden flooring can cause tripping hazard with confidence 0.314 at location [373.73, 556.58, 727.6, 961.71]
-Detected Uneven floor transition between tiled and wooden flooring can cause tripping hazard with confidence 0.378 at location [3.52, 558.32, 490.08, 946.55]
-Detected Uneven floor transition between tiled and wooden flooring can cause tripping hazard with confidence 0.252 at location [-0.31, 674.31, 205.16, 961.08]
-Detected Uneven floor transition between tiled and wooden flooring can cause tripping hazard with confidence 0.204 at location [491.63, 673.8, 721.49, 954.41]
-Detected Uneven floor transition between tiled and wooden flooring can cause tripping hazard with confidence 0.158 at location [146.19, 776.67, 333.75, 873.62]
-Detected Uneven floor transition between tiled and wooden flooring can cause tripping hazard with confidence 0.369 at location [483.27, 672.73, 720.67, 955.73]
-Detected Uneven floor transition between tiled and wooden flooring can cause tripping hazard with confidence 0.208 at location [0.37, 538.66, 501.37, 962.23]
-Detected Uneven floor transition between tiled and wooden flooring can cause tripping hazard with confidence 0.254 at location [210.51, 804.57, 499.61, 961.62]
-Detected Uneven floor transition between tiled and wooden flooring can cause tripping hazard with confidence 0.164 at location [506.74, 770.95, 713.71, 953.01]
-Detected Poor lighting in certain areas with confidence 0.268 at location [0.02, 3.71, 35.15, 28.88]
-Detected Poor lighting in certain areas with confidence 0.159 at location [672.13, 32.17, 719.61, 78.92]
-Detected Poor lighting in certain areas with confidence 0.263 at location [690.68, 64.35, 713.73, 71.7]
-Detected Poor lighting in certain areas with confidence 0.271 at location [680.75, 60.9, 720.56, 78.45]
-Detected Poor lighting in certain areas with confidence 0.445 at location [265.09, 84.74, 325.86, 120.91]
-Detected Poor lighting in certain areas with confidence 0.21 at location [484.96, 1.97, 725.56, 192.27]
-Detected Poor lighting in certain areas with confidence 0.168 at location [4.13, 4.26, 488.96, 211.29]
-Detected Poor lighting in certain areas with confidence 0.429 at location [446.35, 141.75, 492.7, 169.05]
-Detected Wet floor near sink with confidence 0.322 at location [514.86, 419.14, 616.79, 429.88]
-Detected Wet floor near sink with confidence 0.167 at location [531.04, 419.2, 620.29, 428.63]
-Detected Clutter on countertops with confidence 0.168 at location [618.24, 417.82, 715.95, 429.53]
-Detected Clutter on countertops with confidence 0.174 at location [230.5, 416.66, 353.17, 451.39]
-Detected Clutter on countertops with confidence 0.152 at location [237.87, 412.54, 446.39, 466.15]
-Detected Clutter on countertops with confidence 0.382 at location [506.87, 417.07, 720.48, 444.54]
-Detected Clutter on countertops with confidence 0.155 at location [604.1, 423.19, 716.59, 436.68]
-Detected Poor lighting in certain areas with confidence 0.167 at location [542.5, 718.06, 679.07, 828.11]
-Bounding box:  [BoundingBox(box=[503.23, 381.77, 536.6, 421.28], score=0.2199009507894516, label='Pots on the stove may contain hot liquids which can cause burns'), BoundingBox(box=[324.42, 408.85, 372.76, 430.2], score=0.21820837259292603, label='Pots on the stove may contain hot liquids which can cause burns'), BoundingBox(box=[432.28, 396.05, 454.07, 420.16], score=0.17523165047168732, label='Pots on the stove may contain hot liquids which can cause burns'), BoundingBox(box=[524.67, 570.38, 711.97, 651.49], score=0.17685872316360474, label='Uneven floor transition between tiled and wooden flooring can cause tripping hazard'), BoundingBox(box=[538.0, 602.96, 653.95, 643.71], score=0.15215101838111877, label='Uneven floor transition between tiled and wooden flooring can cause tripping hazard'), BoundingBox(box=[504.4, 558.56, 722.64, 716.69], score=0.28936100006103516, label='Uneven floor transition between tiled and wooden flooring can cause tripping hazard'), BoundingBox(box=[612.12, 603.5, 721.26, 648.46], score=0.15940779447555542, label='Uneven floor transition between tiled and wooden flooring can cause tripping hazard'), BoundingBox(box=[0.24, 622.83, 85.27, 672.33], score=0.15845835208892822, label='Uneven floor transition between tiled and wooden flooring can cause tripping hazard'), BoundingBox(box=[678.89, 659.33, 719.52, 700.55], score=0.1529962420463562, label='Uneven floor transition between tiled and wooden flooring can cause tripping hazard'), BoundingBox(box=[373.73, 556.58, 727.6, 961.71], score=0.31381890177726746, label='Uneven floor transition between tiled and wooden flooring can cause tripping hazard'), BoundingBox(box=[3.52, 558.32, 490.08, 946.55], score=0.3778228759765625, label='Uneven floor transition between tiled and wooden flooring can cause tripping hazard'), BoundingBox(box=[-0.31, 674.31, 205.16, 961.08], score=0.25210705399513245, label='Uneven floor transition between tiled and wooden flooring can cause tripping hazard'), BoundingBox(box=[491.63, 673.8, 721.49, 954.41], score=0.20426440238952637, label='Uneven floor transition between tiled and wooden flooring can cause tripping hazard'), BoundingBox(box=[146.19, 776.67, 333.75, 873.62], score=0.1581413745880127, label='Uneven floor transition between tiled and wooden flooring can cause tripping hazard'), BoundingBox(box=[483.27, 672.73, 720.67, 955.73], score=0.3686336278915405, label='Uneven floor transition between tiled and wooden flooring can cause tripping hazard'), BoundingBox(box=[0.37, 538.66, 501.37, 962.23], score=0.20816119015216827, label='Uneven floor transition between tiled and wooden flooring can cause tripping hazard'), BoundingBox(box=[210.51, 804.57, 499.61, 961.62], score=0.25380146503448486, label='Uneven floor transition between tiled and wooden flooring can cause tripping hazard'), BoundingBox(box=[506.74, 770.95, 713.71, 953.01], score=0.16410782933235168, label='Uneven floor transition between tiled and wooden flooring can cause tripping hazard'), BoundingBox(box=[0.02, 3.71, 35.15, 28.88], score=0.26775380969047546, label='Poor lighting in certain areas'), BoundingBox(box=[672.13, 32.17, 719.61, 78.92], score=0.15863938629627228, label='Poor lighting in certain areas'), BoundingBox(box=[690.68, 64.35, 713.73, 71.7], score=0.263172447681427, label='Poor lighting in certain areas'), BoundingBox(box=[680.75, 60.9, 720.56, 78.45], score=0.27110397815704346, label='Poor lighting in certain areas'), BoundingBox(box=[265.09, 84.74, 325.86, 120.91], score=0.44462481141090393, label='Poor lighting in certain areas'), BoundingBox(box=[484.96, 1.97, 725.56, 192.27], score=0.20961131155490875, label='Poor lighting in certain areas'), BoundingBox(box=[4.13, 4.26, 488.96, 211.29], score=0.1676091104745865, label='Poor lighting in certain areas'), BoundingBox(box=[446.35, 141.75, 492.7, 169.05], score=0.42856132984161377, label='Poor lighting in certain areas'), BoundingBox(box=[514.86, 419.14, 616.79, 429.88], score=0.32243964076042175, label='Wet floor near sink'), BoundingBox(box=[531.04, 419.2, 620.29, 428.63], score=0.1674482226371765, label='Wet floor near sink'), BoundingBox(box=[618.24, 417.82, 715.95, 429.53], score=0.16809023916721344, label='Clutter on countertops'), BoundingBox(box=[230.5, 416.66, 353.17, 451.39], score=0.1744512915611267, label='Clutter on countertops'), BoundingBox(box=[237.87, 412.54, 446.39, 466.15], score=0.15214669704437256, label='Clutter on countertops'), BoundingBox(box=[506.87, 417.07, 720.48, 444.54], score=0.3817525804042816, label='Clutter on countertops'), BoundingBox(box=[604.1, 423.19, 716.59, 436.68], score=0.15506300330162048, label='Clutter on countertops'), BoundingBox(box=[542.5, 718.06, 679.07, 828.11], score=0.16656050086021423, label='Poor lighting in certain areas')]
-Sending request with /home/prathik-somanath/git/responsible/backend-server/temp_image.png to riskitfree as 648eb975-5593-42e1-8106-0b1a34210b5d.png
-Uploaading image to  s3
-File uploaded to s3 648eb975-5593-42e1-8106-0b1a34210b5d.png
-File /home/prathik-somanath/git/responsible/backend-server/temp_image.png uploaded to 648eb975-5593-42e1-8106-0b1a34210b5d.png.
-Inside create_space_log
-Result:  InsertOneResult(ObjectId('6802fcb80437f57ae7546e7b'), acknowledged=True)
-INFO:     2603:8000:ba00:2aae:dde4:c975:a41f:61d0:0 - "POST /space/logs/upload-image HTTP/1.1" 200 OK
-Decoding token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODAwMzI5MTBmODVmMzUyMGI5ZWE5NzciLCJleHAiOjE3NDUxNzYwMDN9.bZwACIluQ9CNqVDSz9Vzvl5ppHor9KfKVrrzhr2xShU
-Payload: {'sub': '680032910f85f3520b9ea977', 'exp': 1745176003}
-Inside get_space_by_id
-INFO:     2603:8000:ba00:2aae:dde4:c975:a41f:61d0:0 - "GET /space/6800bd08b9f934916a772c00 HTTP/1.1" 200 OK
-Decoding token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODAwMzI5MTBmODVmMzUyMGI5ZWE5NzciLCJleHAiOjE3NDUxNzYwMDN9.bZwACIluQ9CNqVDSz9Vzvl5ppHor9KfKVrrzhr2xShU
-Payload: {'sub': '680032910f85f3520b9ea977', 'exp': 1745176003}
-Inside get_space_by_id
-INFO:     2603:8000:ba00:2aae:dde4:c975:a41f:61d0:0 - "GET /space/logs/space/6800bd08b9f934916a772c00 HTTP/1.1" 200 OK
-INFO:     2603:8000:ba00:2aae:dde4:c975:a41f:61d0:0 - "GET /patient HTTP/1.1" 307 Temporary Redirect
-Decoding token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODAwMzI5MTBmODVmMzUyMGI5ZWE5NzciLCJleHAiOjE3NDUxNzYwMDN9.bZwACIluQ9CNqVDSz9Vzvl5ppHor9KfKVrrzhr2xShU
-Payload: {'sub': '680032910f85f3520b9ea977', 'exp': 1745176003}
-INFO:     2603:8000:ba00:2aae:dde4:c975:a41f:61d0:0 - "GET /patient/ HTTP/1.1" 200 OK
-Decoding token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODAwMzI5MTBmODVmMzUyMGI5ZWE5NzciLCJleHAiOjE3NDUxNzYwMDN9.bZwACIluQ9CNqVDSz9Vzvl5ppHor9KfKVrrzhr2xShU
-Payload: {'sub': '680032910f85f3520b9ea977', 'exp': 1745176003}
-Inside get_space_by_id
-INFO:     2603:8000:ba00:2aae:dde4:c975:a41f:61d0:0 - "GET /space/logs/6802fcb80437f57ae7546e7b HTTP/1.1" 200 OK
+WARNING:  StatReload detected changes in 'chat_agent/tools.py'. Reloading...
+/home/prathik-somanath/git/responsible/backend-server/venv/lib/python3.12/site-packages/pydantic/_internal/_config.py:373: UserWarning: Valid config keys have changed in V2:
+* 'allow_population_by_field_name' has been renamed to 'validate_by_name'
+  warnings.warn(message, UserWarning)
+Process SpawnProcess-7:
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.12/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/prathik-somanath/git/responsible/backend-server/venv/lib/python3.12/site-packages/uvicorn/_subprocess.py", line 76, in subprocess_started
+    target(sockets=sockets)
+  File "/home/prathik-somanath/git/responsible/backend-server/venv/lib/python3.12/site-packages/uvicorn/server.py", line 61, in run
+    return asyncio.run(self.serve(sockets=sockets))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/asyncio/runners.py", line 194, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/asyncio/base_events.py", line 687, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/home/prathik-somanath/git/responsible/backend-server/venv/lib/python3.12/site-packages/uvicorn/server.py", line 68, in serve
+    config.load()
+  File "/home/prathik-somanath/git/responsible/backend-server/venv/lib/python3.12/site-packages/uvicorn/config.py", line 473, in load
+    self.loaded_app = import_from_string(self.app)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/prathik-somanath/git/responsible/backend-server/venv/lib/python3.12/site-packages/uvicorn/importer.py", line 21, in import_from_string
+    module = importlib.import_module(module_str)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/importlib/__init__.py", line 90, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/home/prathik-somanath/git/responsible/backend-server/main.py", line 9, in <module>
+    from chat_agent.router import router as chat_agent_router
+  File "/home/prathik-somanath/git/responsible/backend-server/chat_agent/router.py", line 5, in <module>
+    from .agent import run_conversation_turn
+  File "/home/prathik-somanath/git/responsible/backend-server/chat_agent/agent.py", line 20
+    ("system", "You are a helpful assistant for the Responsible application. 
+               ^
+SyntaxError: unterminated string literal (detected at line 20)
+Unique indexes created on username and email.
+WARNING:  StatReload detected changes in 'chat_agent/agent.py'. Reloading...
+/home/prathik-somanath/git/responsible/backend-server/venv/lib/python3.12/site-packages/pydantic/_internal/_config.py:373: UserWarning: Valid config keys have changed in V2:
+* 'allow_population_by_field_name' has been renamed to 'validate_by_name'
+  warnings.warn(message, UserWarning)
+Process SpawnProcess-8:
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.12/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/prathik-somanath/git/responsible/backend-server/venv/lib/python3.12/site-packages/uvicorn/_subprocess.py", line 76, in subprocess_started
+    target(sockets=sockets)
+  File "/home/prathik-somanath/git/responsible/backend-server/venv/lib/python3.12/site-packages/uvicorn/server.py", line 61, in run
+    return asyncio.run(self.serve(sockets=sockets))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/asyncio/runners.py", line 194, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/asyncio/base_events.py", line 687, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/home/prathik-somanath/git/responsible/backend-server/venv/lib/python3.12/site-packages/uvicorn/server.py", line 68, in serve
+    config.load()
+  File "/home/prathik-somanath/git/responsible/backend-server/venv/lib/python3.12/site-packages/uvicorn/config.py", line 473, in load
+    self.loaded_app = import_from_string(self.app)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/prathik-somanath/git/responsible/backend-server/venv/lib/python3.12/site-packages/uvicorn/importer.py", line 21, in import_from_string
+    module = importlib.import_module(module_str)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/importlib/__init__.py", line 90, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/home/prathik-somanath/git/responsible/backend-server/main.py", line 9, in <module>
+    from chat_agent.router import router as chat_agent_router
+  File "/home/prathik-somanath/git/responsible/backend-server/chat_agent/router.py", line 5, in <module>
+    from .agent import run_conversation_turn
+  File "/home/prathik-somanath/git/responsible/backend-server/chat_agent/agent.py", line 55
+    context_str += f"\nPATIENT ({mentioned_relationship.capitalize()}):
+                   ^
+SyntaxError: unterminated f-string literal (detected at line 55)
+Unique indexes created on username and email.
+WARNING:  StatReload detected changes in 'chat_agent/router.py'. Reloading...
+/home/prathik-somanath/git/responsible/backend-server/venv/lib/python3.12/site-packages/pydantic/_internal/_config.py:373: UserWarning: Valid config keys have changed in V2:
+* 'allow_population_by_field_name' has been renamed to 'validate_by_name'
+  warnings.warn(message, UserWarning)
+Process SpawnProcess-9:
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.12/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/prathik-somanath/git/responsible/backend-server/venv/lib/python3.12/site-packages/uvicorn/_subprocess.py", line 76, in subprocess_started
+    target(sockets=sockets)
+  File "/home/prathik-somanath/git/responsible/backend-server/venv/lib/python3.12/site-packages/uvicorn/server.py", line 61, in run
+    return asyncio.run(self.serve(sockets=sockets))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/asyncio/runners.py", line 194, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/asyncio/base_events.py", line 687, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/home/prathik-somanath/git/responsible/backend-server/venv/lib/python3.12/site-packages/uvicorn/server.py", line 68, in serve
+    config.load()
+  File "/home/prathik-somanath/git/responsible/backend-server/venv/lib/python3.12/site-packages/uvicorn/config.py", line 473, in load
+    self.loaded_app = import_from_string(self.app)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/prathik-somanath/git/responsible/backend-server/venv/lib/python3.12/site-packages/uvicorn/importer.py", line 21, in import_from_string
+    module = importlib.import_module(module_str)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/importlib/__init__.py", line 90, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/home/prathik-somanath/git/responsible/backend-server/main.py", line 9, in <module>
+    from chat_agent.router import router as chat_agent_router
+  File "/home/prathik-somanath/git/responsible/backend-server/chat_agent/router.py", line 7, in <module>
+    from .agent import process_chat_request
+  File "/home/prathik-somanath/git/responsible/backend-server/chat_agent/agent.py", line 55
+    context_str += f"\nPATIENT ({mentioned_relationship.capitalize()}):
+                   ^
+SyntaxError: unterminated f-string literal (detected at line 55)
+Unique indexes created on username and email.
+INFO:     Stopping reloader process [927498]

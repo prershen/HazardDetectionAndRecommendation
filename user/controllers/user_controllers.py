@@ -1,5 +1,5 @@
 from pymongo.errors import DuplicateKeyError
-from user.models.user_models import User, UserUpdate, UserCreate
+from user.models.user_models import User, UserUpdate, UserCreate, UserResponse
 from pymongo.collection import Collection
 from bson.objectid import ObjectId
 from typing import Optional
@@ -55,7 +55,7 @@ class UserController:
         user_data = users_collection.find_one({"_id": ObjectId(user_id)})
 
         if user_data:
-            return User(**user_data)
+            return UserResponse(**user_data)
         return None
 
     async def get_user_by_username(self, username: str, db: Collection) -> Optional[User]:
@@ -63,7 +63,7 @@ class UserController:
         user_data = users_collection.find_one({"username": username})
 
         if user_data:
-            return User(**user_data)
+            return UserResponse(**user_data)
         return None
 
     async def authenticate_user(self, username: str, password: str, db: Collection) -> Optional[User]:
@@ -94,7 +94,7 @@ class UserController:
 
             if updated_user:
                 updated_user["_id"] = str(updated_user["_id"])
-                return User(**updated_user)
+                return UserResponse(**updated_user)
             return None
         except DuplicateKeyError as e:
             # Check which field caused the error
