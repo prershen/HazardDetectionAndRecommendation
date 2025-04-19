@@ -404,6 +404,36 @@ def _get_preprocessed_image(pixel_values):
     unnormalized_image = Image.fromarray(unnormalized_image)
     return unnormalized_image
 
+def compute_iou(box1, box2):
+    """Compute IoU between two boxes: (x1, y1, x2, y2)"""
+    x1, y1, x2, y2 = box1
+    x1g, y1g, x2g, y2g = box2
+
+    xi1 = max(x1, x1g)
+    yi1 = max(y1, y1g)
+    xi2 = min(x2, x2g)
+    yi2 = min(y2, y2g)
+    inter_area = max(xi2 - xi1, 0) * max(yi2 - yi1, 0)
+
+    box1_area = (x2 - x1) * (y2 - y1)
+    box2_area = (x2g - x1g) * (y2g - y1g)
+
+    union_area = box1_area + box2_area - inter_area
+    return inter_area / union_area if union_area > 0 else 0
+
+def remove_duplicates(bbs):
+    """Remove fully overlapping boxes (IoU = 1) with the same label"""
+    filtered = []
+    for i, (box1, score1, label1) in enumerate(bbs):
+        is_duplicate = False
+        for j, (box2, score2, label2) in enumerate(filtered):
+            if label1 == label2 and compute_iou(box1.tolist(), box2.tolist()) == 1.0:
+                is_duplicate = True
+                break
+        if not is_duplicate:
+            filtered.append((box1, score1, label1))
+    return filtered
+
 def _get_bounding_box(hazard_list, image):
     print("Inside _get_bounding_box")
     hazards = [hazard_list.high_priority + hazard_list.medium_priority + hazard_list.low_priority]
@@ -451,7 +481,7 @@ def _get_bounding_box(hazard_list, image):
             else:
                 print("label in low priority: ", label)
                 low_priority_sorted_bb.append((box, score, label))
-        iter_list = high_priority_sorted_bb + medium_priority_sorted_bb
+        iter_list = remove_duplicates(high_priority_sorted_bb + medium_priority_sorted_bb)
         print("iter_list: ", iter_list)
         for box, score, label in iter_list:
             box = [round(i, 2) for i in box.tolist()]
