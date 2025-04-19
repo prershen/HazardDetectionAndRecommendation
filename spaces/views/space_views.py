@@ -77,6 +77,7 @@ async def create_space(
     current_user_id: str = Depends(get_current_user)
 ):
     try:
+        print("Creating space: ", space)
         # Ensure the user creating the space is the same as the user_id
         space.user_id = current_user_id
         created_space = await space_controller.create_space(space, db)
@@ -86,6 +87,7 @@ async def create_space(
     except ValueError as e:
         raise HTTPException(status_code=400, detail=str(e))
     except Exception as e:
+        print("Space creation failed: ", str(e))
         raise HTTPException(
             status_code=500,
             detail=f"Space creation failed: {str(e)}"
@@ -431,18 +433,27 @@ def _get_bounding_box(hazard_list, image):
         draw = ImageDraw.Draw(visualized_image)
         boxes, scores, labels = results[i]["boxes"], results[i]["scores"], results[i]["labels"]
         sorted_bb = sorted(list(zip(boxes, scores, labels)), key=lambda x:x[1], reverse=True)
+        if len(sorted_bb) == 0 and (hazard_list.high_priority or hazard_list.medium_priority):
+            raise HTTPException(
+                status_code=500,
+                detail=f"No bounding boxes found for {text}"
+            )
         high_priority_sorted_bb = []
         medium_priority_sorted_bb = []
         low_priority_sorted_bb = []
         for box, score, label in zip(boxes, scores, labels):
-            if label in hazard_list.high_priority:
+            if text[label] in hazard_list.high_priority:
+                print("label in high priority: ", label)
                 high_priority_sorted_bb.append((box, score, label))
-            elif label in hazard_list.medium_priority:
+            elif text[label] in hazard_list.medium_priority:
+                print("label in medium priority: ", label)
                 medium_priority_sorted_bb.append((box, score, label))
             else:
+                print("label in low priority: ", label)
                 low_priority_sorted_bb.append((box, score, label))
-        iter_list = high_priority_sorted_bb + medium_priority_sorted_bb + low_priority_sorted_bb
-        for box, score, label in iter_list[:10]:
+        iter_list = high_priority_sorted_bb + medium_priority_sorted_bb
+        print("iter_list: ", iter_list)
+        for box, score, label in iter_list:
             box = [round(i, 2) for i in box.tolist()]
             print(f"Detected {text[label]} with confidence {round(score.item(), 3)} at location {box}")
             bb = BoundingBox(box=box, score=score, label=text[label])
