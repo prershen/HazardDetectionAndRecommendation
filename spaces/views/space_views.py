@@ -64,6 +64,7 @@ class Hazard(BaseModel):
 class Response(BaseModel):
   hazards: list[Hazard]
   recommendations: list[str]
+  walking_path_score: float
 
 # New models for patient-space operations
 class PatientToSpaceRequest(BaseModel):
@@ -271,14 +272,17 @@ def _get_hazards_and_recommendations(image, patients):
                     {
                     "type": "text",
                     "text": prompt + " Generate a list of up to 15 hazards this user might face in this room. Be specific and prioritize based on user's condition. Respond in the form of a dictionary of priority and list of objects without explanation and their respective risk score out of 1 with 0 being lowest risk and 1 being highest risk. \
+                        Also, give a walking path score (0-1) for how easily the user can navigate through the room. \
                         Give in the following format\
                         High Priority: {\"A\": scoreA, \"B\": scoreB} \
                         Medium Priority: {\"C\": scoreC, \"D\": scoreD}\
                         Low Priority: {\"E\": scoreE, \"F\": scoreF} \
+                        Walking Path: {\"G\": scoreG} \
                         For example, if there is an image with a rug near the desk, an unstable chair with wheels, poor lighting, sharp edged table close to door, and low seating, the model should respond as follows. \
                         High Priority: {\"Rug near the desk\": 0.9, \"Unstable chair with wheels\": 0.85, \"Sharp edged table near door\": 0.95} \
                         Medium Priority: {\"low seating\": 0.6}\
-                        Low Priority: {\"Poor lighting\": 0.3}"
+                        Low Priority: {\"Poor lighting\": 0.3} \
+                        Walking Path: {\"G\": 0.8}"
                     },
                     {
                     "type": "image_url",
@@ -357,9 +361,10 @@ def _get_hazards_and_recommendations(image, patients):
         )
 
 
-    hazards, recommendations = response.hazards, response.recommendations
+    hazards, recommendations, walking_path_score = response.hazards, response.recommendations, response.walking_path_score
     print("Hazards: ", hazards)
     print("Recommendations: ", recommendations)
+    print("Walking path score: ", walking_path_score)
     for hazard in hazards:
         if "high" in hazard.priority.lower():
             hazard_list.high_priority.append(hazard.description)
@@ -368,9 +373,9 @@ def _get_hazards_and_recommendations(image, patients):
         else:
             hazard_list.low_priority.append(hazard.description)
     print("hazard_list: ", hazard_list)
-    return hazard_list, hazards, recommendations
+    return hazard_list, hazards, recommendations, walking_path_score
 
-def _get_safety_score(hazards):
+def _get_safety_score(hazards, walking_path_score):
     print("Inside _get_risk_score")
     total_score = 0
     total_weight = 0
@@ -385,8 +390,9 @@ def _get_safety_score(hazards):
                 total_score += hazard.score * priority_weights[priority]
                 total_weight += priority_weights[priority]
     risk_score = total_score / total_weight if total_weight > 0 else 1
+    risk_score = round(risk_score * 100)
     print("Risk score: ", risk_score)
-    return round((1 - risk_score) * 100)
+    return 100 - (risk_score - risk_score * walking_path_score)
 
 def _get_preprocessed_image(pixel_values):
     pixel_values = pixel_values.squeeze().numpy()
@@ -425,7 +431,18 @@ def _get_bounding_box(hazard_list, image):
         draw = ImageDraw.Draw(visualized_image)
         boxes, scores, labels = results[i]["boxes"], results[i]["scores"], results[i]["labels"]
         sorted_bb = sorted(list(zip(boxes, scores, labels)), key=lambda x:x[1], reverse=True)
-        for box, score, label in sorted_bb[:10]:
+        high_priority_sorted_bb = []
+        medium_priority_sorted_bb = []
+        low_priority_sorted_bb = []
+        for box, score, label in zip(boxes, scores, labels):
+            if label in hazard_list.high_priority:
+                high_priority_sorted_bb.append((box, score, label))
+            elif label in hazard_list.medium_priority:
+                medium_priority_sorted_bb.append((box, score, label))
+            else:
+                low_priority_sorted_bb.append((box, score, label))
+        iter_list = high_priority_sorted_bb + medium_priority_sorted_bb + low_priority_sorted_bb
+        for box, score, label in iter_list[:10]:
             box = [round(i, 2) for i in box.tolist()]
             print(f"Detected {text[label]} with confidence {round(score.item(), 3)} at location {box}")
             bb = BoundingBox(box=box, score=score, label=text[label])
@@ -478,9 +495,9 @@ async def upload_image(
         patients = [await patient_controller.get_patient_by_id(patient_id, db) for patient_id in space.patient_ids]
         
         print("Getting hazards and recommendations")
-        hazard_list, hazards, recommendations = _get_hazards_and_recommendations(image_path, patients)
+        hazard_list, hazards, recommendations, walking_path_score = _get_hazards_and_recommendations(image_path, patients)
         
-        score = _get_safety_score(hazards)
+        score = _get_safety_score(hazards, walking_path_score)
         print("Safety Score: ", score)
 
         bounding_box_info = []
@@ -498,7 +515,7 @@ async def upload_image(
             image_bb=bb_image_url,
             score=score,
             bounding_box_info=bounding_box_info,
-            recommendations=recommendations,
+            recommendations=recommendations[:10],
             hazard_list=hazard_list,
             comments=None,
         )
