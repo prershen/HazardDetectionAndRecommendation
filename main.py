@@ -5,7 +5,6 @@ from core.config import settings
 from user.views import user_views
 from spaces.views import space_views
 from patients.views import patient_views
-from agent.views import agent_views
 from simple_agent.views import simple_agent_views
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -47,5 +46,4 @@ async def read_root():
 app.include_router(user_views.router, prefix="/user")
 app.include_router(space_views.router, prefix="/space")
 app.include_router(patient_views.router, prefix="/patient")
-app.include_router(agent_views.router, prefix="/agent")
 app.include_router(simple_agent_views.router, prefix="/simple_agent")
