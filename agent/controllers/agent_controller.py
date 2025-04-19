@@ -18,7 +18,7 @@ class AgentController:
     def __init__(self):
         # Initialize Gemini model
         self.model = genai.GenerativeModel(
-            model_name="gemini-1.5-pro",
+            model_name="gemini-2.0-flash-lite",
             generation_config={
                 "temperature": 0.7,
                 "top_p": 0.95,
@@ -72,6 +72,10 @@ class AgentController:
         6. Temporal comparison of a single space (e.g., comparing today vs yesterday, or before vs after)
         7. Finding optimal space configuration (best safety score or improvement)
         8. General conversation not requiring specific data retrieval
+
+        IMPORTANT: If the query is asking about "best score", "highest safety", "safest room/space", 
+        or comparing scores between days (like "yesterday", "previous day", "last week"), make 
+        sure to set the appropriate flags (needs_optimal_config or needs_temporal_comparison).
         
         Return your analysis in JSON format with these fields:
         - needs_patient_info: boolean
@@ -112,13 +116,20 @@ class AgentController:
         """Retrieve space information from the database based on the query analysis."""
         # Extract information from analysis
         analysis = state.current_context.get("query_analysis", "")
-        needs_space_info = "needs_space_info" in analysis.lower() and "true" in analysis.lower()
-        needs_space_history = "needs_space_history" in analysis.lower() and "true" in analysis.lower()
-        needs_space_comparison = "needs_space_comparison" in analysis.lower() and "true" in analysis.lower()
-        needs_date_specific = "needs_date_specific" in analysis.lower() and "true" in analysis.lower()
-        needs_temporal_comparison = "needs_temporal_comparison" in analysis.lower() and "true" in analysis.lower()
-        needs_optimal_config = "needs_optimal_config" in analysis.lower() and "true" in analysis.lower()
-        is_improvement_query = "is_improvement_query" in analysis.lower() and "true" in analysis.lower()
+        
+        # More robust extraction of boolean flags from the analysis text
+        def extract_bool_value(field_name):
+            pattern = rf'"{field_name}":\s*(true|false)'
+            match = re.search(pattern, analysis, re.IGNORECASE)
+            return match and match.group(1).lower() == "true"
+            
+        needs_space_info = extract_bool_value("needs_space_info")
+        needs_space_history = extract_bool_value("needs_space_history")
+        needs_space_comparison = extract_bool_value("needs_space_comparison")
+        needs_date_specific = extract_bool_value("needs_date_specific")
+        needs_temporal_comparison = extract_bool_value("needs_temporal_comparison")
+        needs_optimal_config = extract_bool_value("needs_optimal_config")
+        is_improvement_query = extract_bool_value("is_improvement_query")
         
         # Extract date if mentioned
         date_match = re.search(r'"date_mentioned":\s*"([0-9]{4}-[0-9]{2}-[0-9]{2})"', analysis)
@@ -277,17 +288,27 @@ class AgentController:
                     space_logs_for_comparison = [log for log in space_logs if str(log["space_id"]) == space_id_str]
                     
                     # Sort by score (descending)
-                    valid_logs = [log for log in space_logs_for_comparison if log.get("score") is not None]
+                    # Ensure we're only comparing logs with valid numeric scores
+                    valid_logs = []
+                    for log in space_logs_for_comparison:
+                        try:
+                            score_val = float(log.get("score", 0))
+                            log["score_numeric"] = score_val  # Add a numeric version of the score
+                            valid_logs.append(log)
+                        except (ValueError, TypeError):
+                            # Skip logs with non-numeric scores
+                            continue
                     
                     if valid_logs:
                         # Sort by score (highest first)
-                        sorted_logs = sorted(valid_logs, key=lambda x: x.get("score", 0), reverse=True)
+                        sorted_logs = sorted(valid_logs, key=lambda x: x.get("score_numeric", 0), reverse=True)
                         
+                        best_score_val = sorted_logs[0].get("score_numeric", 0)
                         optimal_configs[space_id_str] = {
                             "space_name": space_name,
                             "space_id": space_id_str,
                             "best_log": sorted_logs[0],
-                            "best_score": sorted_logs[0].get("score", 0),
+                            "best_score": best_score_val,
                             "all_logs": sorted_logs
                         }
                 
@@ -354,7 +375,16 @@ class AgentController:
                     if related_logs:
                         # Just use the most recent log by default
                         latest_log = sorted(related_logs, key=lambda x: x.get("created_at", ""), reverse=True)[0]
-                        context += f"  Latest Safety Score: {latest_log.get('score', 'Unknown')}\n"
+                        
+                        # Handle safety score properly
+                        safety_score = "Unknown"
+                        try:
+                            if latest_log.get("score") is not None:
+                                safety_score = float(latest_log.get("score"))
+                        except (ValueError, TypeError):
+                            pass
+                        
+                        context += f"  Latest Safety Score: {safety_score}\n"
                         context += f"  Latest Log Date: {latest_log.get('created_at', 'Unknown')}\n"
                         
                         # Add hazards
@@ -508,14 +538,22 @@ class AgentController:
                     
                     if current_log and previous_log:
                         # Compare safety scores
-                        current_score = current_log.get("score", 0)
-                        previous_score = previous_log.get("score", 0)
-                        score_difference = current_score - previous_score
-                        
-                        context += f"  Safety Score:\n"
-                        context += f"    {current_date}: {current_score}\n"
-                        context += f"    {previous_date}: {previous_score}\n"
-                        context += f"    Change: {score_difference:+.2f}\n"
+                        try:
+                            # Ensure we're working with numbers, not strings
+                            current_score = float(current_log.get("score", 0))
+                            previous_score = float(previous_log.get("score", 0))
+                            score_difference = current_score - previous_score
+                            
+                            context += f"  Safety Score:\n"
+                            context += f"    {current_date}: {current_score}\n"
+                            context += f"    {previous_date}: {previous_score}\n"
+                            context += f"    Change: {score_difference:+.2f}\n"
+                        except (ValueError, TypeError):
+                            # Handle case where score might not be a valid number
+                            context += f"  Safety Score:\n"
+                            context += f"    {current_date}: {current_log.get('score', 'Unknown')}\n"
+                            context += f"    {previous_date}: {previous_log.get('score', 'Unknown')}\n"
+                            context += f"    Unable to calculate change due to invalid score format\n"
                         
                         # Compare hazards
                         current_hazards = current_log.get("hazard_list", {})
@@ -606,7 +644,7 @@ class AgentController:
                     
                     context += f"Overall Best Space Configuration:\n"
                     context += f"  Space: {best_config['space_name']}\n"
-                    context += f"  Best Safety Score: {best_log.get('score', 'Unknown')}\n"
+                    context += f"  Best Safety Score: {best_config.get('best_score', 'Unknown')}\n"
                     context += f"  Date: {best_log.get('created_at', 'Unknown')}\n"
                     
                     # Add hazards
@@ -640,7 +678,8 @@ class AgentController:
                         best_log = config.get("best_log", {})
                         
                         context += f"  {config['space_name']}:\n"
-                        context += f"    Best Safety Score: {best_log.get('score', 'Unknown')}\n"
+                        # Use the numeric best_score we computed earlier
+                        context += f"    Best Safety Score: {config.get('best_score', 'Unknown')}\n"
                         context += f"    Date: {best_log.get('created_at', 'Unknown')}\n"
                 
                 context += "\n"
@@ -662,8 +701,9 @@ class AgentController:
         4. DO NOT hallucinate information that isn't present in the context
         5. Keep your response brief - aim for 3-5 sentences maximum unless listing specific items
         6. Focus only on answering the user's specific question
+        7. DO NOT add ID numbers to the response
         
-        Based on ONLY the facts in the provided context, give a brief, direct response:
+        Based on the provided context, give  response:
         """
         
         response = self.model.generate_content(prompt)
@@ -673,10 +713,23 @@ class AgentController:
         
         return state
     
-    async def process_conversation(self, user_id: str, query: str, history: List[Message], db: Collection) -> str:
+    async def process_conversation(self, user_id: str, query: str, history: Any, db: Collection) -> Tuple[str, Any]:
         """Process a conversation turn and return the agent's response."""
         # Initialize state with conversation history and user info
-        conversation_history = history.copy()
+        
+        # Ensure history is a list of Message objects
+        conversation_history = []
+        if history:
+            # Convert history to Message objects if needed
+            if isinstance(history, list):
+                for item in history:
+                    if isinstance(item, Message):
+                        conversation_history.append(item)
+                    elif isinstance(item, dict) and 'role' in item and 'content' in item:
+                        conversation_history.append(Message(role=item['role'], content=item['content']))
+                    elif isinstance(item, str):
+                        # Assume assistant message if just a string
+                        conversation_history.append(Message(role="assistant", content=item))
         
         # Add the new user message
         conversation_history.append(Message(role="user", content=query))

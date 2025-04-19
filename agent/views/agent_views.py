@@ -4,7 +4,7 @@ from agent.controllers.agent_controller import AgentController
 from user.db.mongodb import get_db
 from pymongo.collection import Collection
 from user.utils.auth import get_current_user
-from typing import List
+from typing import List, Any
 
 router = APIRouter()
 agent_controller = AgentController()
@@ -27,7 +27,7 @@ async def have_conversation(
                 status_code=status.HTTP_403_FORBIDDEN,
                 detail="User ID mismatch with authenticated user"
             )
-        print(conversation)
+        print(f"Processing conversation: {conversation}")
         # Process the conversation
         response_text, updated_history = await agent_controller.process_conversation(
             user_id=current_user_id,
@@ -43,6 +43,7 @@ async def have_conversation(
         )
         
     except Exception as e:
+        print(f"Error in conversation endpoint: {str(e)}")
         raise HTTPException(
             status_code=500,
             detail=f"Conversation processing failed: {str(e)}"
